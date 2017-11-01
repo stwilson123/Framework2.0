@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{050D2CCC-8150-4E9D-B7AB-33ED8AE86C46}</ProjectGuid>
+    <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Framework</RootNamespace>
+    <AssemblyName>Framework</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=4.6.2.0, Culture=neutral, PublicKeyToken=17863af14b0044da">
+      <HintPath>..\packages\Autofac.4.6.2\lib\net45\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Configuration, Version=4.0.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da">
+      <HintPath>..\packages\Autofac.Configuration.4.0.1\lib\net45\Autofac.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc">
+      <HintPath>..\packages\Castle.Core.4.2.1\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Extensions.Configuration, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.1.0.0\lib\netstandard1.1\Microsoft.Extensions.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Abstractions.1.0.0\lib\netstandard1.0\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60">
+      <HintPath>..\packages\Microsoft.Extensions.Primitives.1.0.0\lib\netstandard1.0\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.IO, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\packages\System.IO.4.1.0\lib\net462\System.IO.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\packages\System.Runtime.4.1.0\lib\net462\System.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Extensions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\packages\System.Runtime.Extensions.4.1.0\lib\net462\System.Runtime.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\packages\System.Runtime.InteropServices.4.1.0\lib\net462\System.Runtime.InteropServices.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Caching\AcquireContext.cs" />
+    <Compile Include="Caching\Cache.cs" />
+    <Compile Include="Caching\CacheModule.cs" />
+    <Compile Include="Caching\DefaultCacheContextAccessor.cs" />
+    <Compile Include="Caching\DefaultCacheHolder.cs" />
+    <Compile Include="Caching\DefaultCacheManager.cs" />
+    <Compile Include="Caching\DefaultParallelCacheContext.cs" />
+    <Compile Include="Caching\ICache.cs" />
+    <Compile Include="Caching\ICacheContextAccessor.cs" />
+    <Compile Include="Caching\ICacheHolder.cs" />
+    <Compile Include="Caching\ICacheManager.cs" />
+    <Compile Include="Caching\IParallelCacheContext.cs" />
+    <Compile Include="Caching\IVolatileProvider.cs" />
+    <Compile Include="Caching\IVolatileToken.cs" />
+    <Compile Include="Environment\Assemblys\AppDomainAssemblyNameResolver.cs" />
+    <Compile Include="Environment\Assemblys\AssemblyLoaderExtensions.cs" />
+    <Compile Include="Environment\Assemblys\DefaultAssemblyLoader.cs" />
+    <Compile Include="Environment\Assemblys\DefaultBuildManager.cs" />
+    <Compile Include="Environment\Assemblys\IAssemblyLoader.cs" />
+    <Compile Include="Environment\Assemblys\IAssemblyNameResolver.cs" />
+    <Compile Include="Environment\Assemblys\IBuildManager.cs" />
+    <Compile Include="Environment\CollectionOrderModule.cs" />
+    <Compile Include="Environment\Configuration\AppConfigurationAccessor.cs" />
+    <Compile Include="Environment\Configuration\ExtensionLocations.cs" />
+    <Compile Include="Environment\Configuration\IAppConfigurationAccessor.cs" />
+    <Compile Include="Environment\Configuration\ShellSettings.cs" />
+    <Compile Include="Environment\Configuration\TenantState.cs" />
+    <Compile Include="Environment\DefaultHostEnvironment.cs" />
+    <Compile Include="Environment\Descriptor\Models\ShellDescriptor.cs" />
+    <Compile Include="Environment\Extensions\Models\DefaultExtensionTypes.cs" />
+    <Compile Include="Environment\Extensions\Models\ExtensionDescriptor.cs" />
+    <Compile Include="Environment\Extensions\Models\Feature.cs" />
+    <Compile Include="Environment\Extensions\Models\FeatureDescriptor.cs" />
+    <Compile Include="Environment\HostEnvironment.cs" />
+    <Compile Include="Environment\IHostEnvironment.cs" />
+    <Compile Include="Environment\ISystemHost.cs" />
+    <Compile Include="Environment\ISystemShell.cs" />
+    <Compile Include="Environment\RunningShellTable.cs" />
+    <Compile Include="Environment\ShellBuilder\Models\ShellBlueprint.cs" />
+    <Compile Include="Environment\ShellBuilder\ShellContext.cs" />
+    <Compile Include="Environment\SystemStarter.cs" />
+    <Compile Include="Events\DefaultOrchardEventBus.cs" />
+    <Compile Include="Events\DelegateHelper.cs" />
+    <Compile Include="Events\EventsInterceptor.cs" />
+    <Compile Include="Events\EventsModule.cs" />
+    <Compile Include="Events\EventsRegistrationSource.cs" />
+    <Compile Include="Events\IEventBus.cs" />
+    <Compile Include="Events\IEventHandler.cs" />
+    <Compile Include="Exceptions\ExceptionExtensions.cs" />
+    <Compile Include="Exceptions\Exception\SystemCoreException.cs" />
+    <Compile Include="Exceptions\Exception\SystemException.cs" />
+    <Compile Include="Exceptions\Exception\SystemFatalException.cs" />
+    <Compile Include="Exceptions\IExceptionPolicy.cs" />
+    <Compile Include="FileSystems\VirtualPath\IVirtualPathProvider.cs" />
+    <Compile Include="IDependency.cs" />
+    <Compile Include="IWorkContextAccessor.cs" />
+    <Compile Include="Localization\LocalizedString.cs" />
+    <Compile Include="Localization\Localizer.cs" />
+    <Compile Include="Localization\NullLocalizer.cs" />
+    <Compile Include="Logging\ILogger.cs" />
+    <Compile Include="Logging\ILoggerFactory.cs" />
+    <Compile Include="Logging\LoggingExtensions.cs" />
+    <Compile Include="Logging\LoggingModule.cs" />
+    <Compile Include="Logging\NullLogger.cs" />
+    <Compile Include="Logging\NullLoggerFactory.cs" />
+    <Compile Include="Mvc\Extensions\HttpContextBaseExtensions.cs" />
+    <Compile Include="Mvc\Extensions\RouteExtension.cs" />
+    <Compile Include="Mvc\HttpContextAccessor.cs" />
+    <Compile Include="Mvc\IHasRequestContext.cs" />
+    <Compile Include="Mvc\IHttpContextAccessor.cs" />
+    <Compile Include="Mvc\MvcModule.cs" />
+    <Compile Include="Mvc\Routes\ShellRoute.cs" />
+    <Compile Include="Mvc\Routes\UrlPrefix.cs" />
+    <Compile Include="Mvc\Routes\UrlPrefixAdjustedHttpContext.cs" />
+    <Compile Include="Mvc\Wrappers\HttpContextBaseWrapper.cs" />
+    <Compile Include="Mvc\Wrappers\HttpRequestBaseWrapper.cs" />
+    <Compile Include="Mvc\Wrappers\HttpResponseBaseWrapper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\IUser.cs" />
+    <Compile Include="Security\OrchardSecurityException.cs" />
+    <Compile Include="Services\Clock.cs" />
+    <Compile Include="Services\IClock.cs" />
+    <Compile Include="Settings\ISite.cs" />
+    <Compile Include="Settings\ISiteService.cs" />
+    <Compile Include="Settings\ResourceDebugMode.cs" />
+    <Compile Include="Tasks\SweepGenerator.cs" />
+    <Compile Include="Utility\Extensions\HttpRequestExtensions.cs" />
+    <Compile Include="WorkContext.cs" />
+    <Compile Include="WorkContextExtensions.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
