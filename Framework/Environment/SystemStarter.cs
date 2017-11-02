@@ -2,8 +2,21 @@
 using Autofac;
 using Autofac.Core;
 using Framework.Caching;
+using Framework.Environment.Assemblys;
+using Framework.Environment.Configuration;
+using Framework.Environment.Extensions;
+using Framework.Environment.Extensions.Compilers;
 using Framework.Events;
+using Framework.FileSystems.AppData;
+using Framework.FileSystems.Dependencies;
+using Framework.FileSystems.LockFile;
+using Framework.FileSystems.VirtualPath;
+using Framework.FileSystems.WebSite;
 using Framework.Logging;
+using Framework.Mvc;
+using Framework.Mvc.ViewEngines.Razor;
+using Framework.Services;
+using Framework.UI.Resources;
 
 namespace Framework.Environment
 {
@@ -23,7 +36,29 @@ namespace Framework.Environment
             builder.RegisterType<DefaultCacheContextAccessor>().As<ICacheContextAccessor>().SingleInstance();
             builder.RegisterType<DefaultParallelCacheContext>().As<IParallelCacheContext>().SingleInstance();
            // builder.RegisterType<DefaultAsyncTokenProvider>().As<IAsyncTokenProvider>().SingleInstance();
-            builder.RegisterType<DefaultHostEnvironment>().As<IHostEnvironment>().SingleInstance();
+            builder.RegisterType<DefaultHostEnvironment>().As<IHostEnvironment>().SingleInstance();    
+            builder.RegisterType<DefaultHostLocalRestart>().As<IHostLocalRestart>().Named<IEventHandler>(typeof(IShellSettingsManagerEventHandler).Name).SingleInstance();
+            builder.RegisterType<DefaultBuildManager>().As<IBuildManager>().SingleInstance();
+            builder.RegisterType<DynamicModuleVirtualPathProvider>().As<ICustomVirtualPathProvider>().SingleInstance();
+            builder.RegisterType<AppDataFolderRoot>().As<IAppDataFolderRoot>().SingleInstance();
+            builder.RegisterType<DefaultExtensionCompiler>().As<IExtensionCompiler>().SingleInstance();
+            builder.RegisterType<DefaultRazorCompilationEvents>().As<IRazorCompilationEvents>().SingleInstance();
+            builder.RegisterType<DefaultProjectFileParser>().As<IProjectFileParser>().SingleInstance();
+            builder.RegisterType<DefaultAssemblyLoader>().As<IAssemblyLoader>().SingleInstance();
+            builder.RegisterType<AppDomainAssemblyNameResolver>().As<IAssemblyNameResolver>().SingleInstance();
+            builder.RegisterType<GacAssemblyNameResolver>().As<IAssemblyNameResolver>().SingleInstance();
+            builder.RegisterType<SystemFrameworkAssemblyNameResolver>().As<IAssemblyNameResolver>().SingleInstance();
+            builder.RegisterType<HttpContextAccessor>().As<IHttpContextAccessor>().InstancePerDependency();
+           // builder.RegisterType<ViewsBackgroundCompilation>().As<IViewsBackgroundCompilation>().SingleInstance();
+            //builder.RegisterType<DefaultExceptionPolicy>().As<IExceptionPolicy>().SingleInstance();
+            builder.RegisterType<DefaultCriticalErrorProvider>().As<ICriticalErrorProvider>().SingleInstance();
+            builder.RegisterType<ResourceFileHashProvider>().As<IResourceFileHashProvider>().SingleInstance();
+            //builder.RegisterType<RazorTemplateCache>().As<IRazorTemplateProvider>().SingleInstance();
+
+            RegisterVolatileProvider<WebSiteFolder, IWebSiteFolder>(builder);
+            RegisterVolatileProvider<AppDataFolder, IAppDataFolder>(builder);  
+            RegisterVolatileProvider<DefaultLockFileManager, ILockFileManager>(builder);
+            RegisterVolatileProvider<Clock, IClock>(builder);
             var container = builder.Build();
             
             
