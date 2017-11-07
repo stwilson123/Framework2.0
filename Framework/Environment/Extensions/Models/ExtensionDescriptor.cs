@@ -3,6 +3,10 @@
 namespace Framework.Environment.Extensions.Models
 {
     public class ExtensionDescriptor {
+        public ExtensionDescriptor() {
+            LifecycleStatus = LifecycleStatus.Production;
+        }
+
         /// <summary>
         /// Virtual path base, "~/Themes", "~/Modules", or "~/Core"
         /// </summary>
@@ -12,6 +16,8 @@ namespace Framework.Environment.Extensions.Models
         /// Folder name under virtual path base
         /// </summary>
         public string Id { get; set; }
+
+        public string VirtualPath { get { return Location + "/" + Id; } }
 
         /// <summary>
         /// The extension type.
@@ -23,7 +29,7 @@ namespace Framework.Environment.Extensions.Models
         public string Path { get; set; }
         public string Description { get; set; }
         public string Version { get; set; }
-        public string OrchardVersion { get; set; }
+        public string SystemVersion { get; set; }
         public string Author { get; set; }
         public string WebSite { get; set; }
         public string Tags { get; set; }
@@ -31,6 +37,7 @@ namespace Framework.Environment.Extensions.Models
         public string Zones { get; set; }
         public string BaseTheme { get; set; }
         public string SessionState { get; set; }
+        public LifecycleStatus LifecycleStatus { get; set; }
 
         public IEnumerable<FeatureDescriptor> Features { get; set; }
     }

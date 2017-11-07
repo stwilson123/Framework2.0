@@ -13,7 +13,7 @@ namespace Framework.Environment.ShellBuilder
         public ShellDescriptor Descriptor { get; set; }
         public ShellBlueprint Blueprint { get; set; }
         public ILifetimeScope LifetimeScope { get; set; }
-        public ILifetimeScope Shell { get; set; }
+        public ISystemShell Shell { get; set; }
 
         public void Dispose() {
             Dispose(true);

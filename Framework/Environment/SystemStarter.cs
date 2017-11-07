@@ -1,11 +1,24 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.IO;
+using System.Web.Hosting;
+using System.Web.Http;
+using System.Web.Http.Dispatcher;
+using System.Web.Mvc;
 using Autofac;
 using Autofac.Core;
+using Framework.AutofacExtend.Config;
 using Framework.Caching;
 using Framework.Environment.Assemblys;
 using Framework.Environment.Configuration;
+using Framework.Environment.Descriptor;
 using Framework.Environment.Extensions;
 using Framework.Environment.Extensions.Compilers;
+using Framework.Environment.Extensions.Folders;
+using Framework.Environment.Extensions.Loaders;
+using Framework.Environment.ShellBuilder;
+using Framework.Environment.State;
 using Framework.Events;
 using Framework.FileSystems.AppData;
 using Framework.FileSystems.Dependencies;
@@ -14,9 +27,15 @@ using Framework.FileSystems.VirtualPath;
 using Framework.FileSystems.WebSite;
 using Framework.Logging;
 using Framework.Mvc;
+using Framework.Mvc.DataAnnotations;
+using Framework.Mvc.Filters;
+using Framework.Mvc.ViewEngines;
 using Framework.Mvc.ViewEngines.Razor;
 using Framework.Services;
 using Framework.UI.Resources;
+using Framework.WebApi;
+using Framework.WebApi.Filters;
+using Orchard.Environment.Extensions.Loaders;
 
 namespace Framework.Environment
 {
@@ -24,6 +43,8 @@ namespace Framework.Environment
     {
         public static IContainer CreateHostContainer(Action<ContainerBuilder> registrations)
         {
+            ExtensionLocations extensionLocations = new ExtensionLocations();
+            
             var builder = new ContainerBuilder();
             builder.RegisterModule(new CollectionOrderModule());
             builder.RegisterModule(new LoggingModule());
@@ -59,7 +80,102 @@ namespace Framework.Environment
             RegisterVolatileProvider<AppDataFolder, IAppDataFolder>(builder);  
             RegisterVolatileProvider<DefaultLockFileManager, ILockFileManager>(builder);
             RegisterVolatileProvider<Clock, IClock>(builder);
+            RegisterVolatileProvider<DefaultDependenciesFolder, IDependenciesFolder>(builder);
+            RegisterVolatileProvider<DefaultAssemblyProbingFolder, IAssemblyProbingFolder>(builder);
+            RegisterVolatileProvider<DefaultVirtualPathMonitor, IVirtualPathMonitor>(builder);
+            RegisterVolatileProvider<DefaultVirtualPathProvider, IVirtualPathProvider>(builder);
+
+            
+            builder.RegisterType<DefaultSystemHost>().As<ISystemHost>().As<IEventHandler>()
+                .Named<IEventHandler>(typeof(IShellSettingsManagerEventHandler).Name)
+                .Named<IEventHandler>(typeof(IShellDescriptorManagerEventHandler).Name)
+                .SingleInstance();
+             {
+                builder.RegisterType<ShellSettingsManager>().As<IShellSettingsManager>().SingleInstance();
+
+                builder.RegisterType<ShellContextFactory>().As<IShellContextFactory>().SingleInstance();
+                {
+                    builder.RegisterType<ShellDescriptorCache>().As<IShellDescriptorCache>().SingleInstance();
+
+                    builder.RegisterType<CompositionStrategy>().As<ICompositionStrategy>().SingleInstance();
+                    {
+                        builder.RegisterType<ShellContainerRegistrations>().As<IShellContainerRegistrations>().SingleInstance();
+                        builder.RegisterType<ExtensionLoaderCoordinator>().As<IExtensionLoaderCoordinator>().SingleInstance();
+                        builder.RegisterType<ExtensionMonitoringCoordinator>().As<IExtensionMonitoringCoordinator>().SingleInstance();
+                        builder.RegisterType<ExtensionManager>().As<IExtensionManager>().SingleInstance();
+                        {
+                            builder.RegisterType<ExtensionHarvester>().As<IExtensionHarvester>().SingleInstance();
+                        builder.RegisterType<ModuleFolders>().As<IExtensionFolders>().SingleInstance()
+                                  .WithParameter(new NamedParameter("paths", extensionLocations.ModuleLocations));
+                            builder.RegisterType<CoreModuleFolders>().As<IExtensionFolders>().SingleInstance()
+                                .WithParameter(new NamedParameter("paths", extensionLocations.CoreLocations));
+                            builder.RegisterType<ThemeFolders>().As<IExtensionFolders>().SingleInstance()
+                                .WithParameter(new NamedParameter("paths", extensionLocations.ThemeLocations));
+ 
+                             builder.RegisterType<CoreExtensionLoader>().As<IExtensionLoader>().SingleInstance();
+                            builder.RegisterType<ReferencedExtensionLoader>().As<IExtensionLoader>().SingleInstance();
+                             builder.RegisterType<PrecompiledExtensionLoader>().As<IExtensionLoader>().SingleInstance();
+                            builder.RegisterType<DynamicExtensionLoader>().As<IExtensionLoader>().SingleInstance();
+                            builder.RegisterType<RawThemeExtensionLoader>().As<IExtensionLoader>().SingleInstance();
+                       }
+                    }
+ 
+                    builder.RegisterType<ShellContainerFactory>().As<IShellContainerFactory>().SingleInstance();
+                }
+//
+                builder.RegisterType<DefaultProcessingEngine>().As<IProcessingEngine>().SingleInstance();
+            }
+            builder.RegisterType<RunningShellTable>().As<IRunningShellTable>().SingleInstance();
+            builder.RegisterType<DefaultSystemShell>().As<ISystemShell>().InstancePerMatchingLifetimeScope("shell");
+           // builder.RegisterType<SessionConfigurationCache>().As<ISessionConfigurationCache>().InstancePerMatchingLifetimeScope("shell");
+
+            registrations(builder);
+
+            var autofacSection = ConfigurationManager.GetSection(ConfigurationSettingsReaderConstants.DefaultSectionName);
+            if (autofacSection != null)
+                // builder.RegisterModule(new ConfigurationSettingsReader());
+                builder.RegisterModule(ConfigurationSettingsReaderFactory.CreateConfigurationSettingsReader());
+            var optionalHostConfig = HostingEnvironment.MapPath("~/Config/Host.config");
+            if (File.Exists(optionalHostConfig))
+//                builder.RegisterModule(new ConfigurationSettingsReader(ConfigurationSettingsReaderConstants.DefaultSectionName, optionalHostConfig));
+                builder.RegisterModule(ConfigurationSettingsReaderFactory.CreateConfigurationSettingsReader(optionalHostConfig));
+
+            var optionalComponentsConfig = HostingEnvironment.MapPath("~/Config/HostComponents.config");
+            if (File.Exists(optionalComponentsConfig))
+                builder.RegisterModule(new HostComponentsConfigModule(optionalComponentsConfig));
+
             var container = builder.Build();
+
+            //
+            // Register Virtual Path Providers
+            //
+            if (HostingEnvironment.IsHosted) {
+                foreach (var vpp in container.Resolve<IEnumerable<ICustomVirtualPathProvider>>()) {
+                    HostingEnvironment.RegisterVirtualPathProvider(vpp.Instance);
+                }
+            }
+//
+            ControllerBuilder.Current.SetControllerFactory(new SystemControllerFactory());
+            FilterProviders.Providers.Add(new SystemFilterProvider());
+//
+            GlobalConfiguration.Configuration.Services.Replace(typeof(IHttpControllerSelector), new DefaultSystemWebApiHttpControllerSelector(GlobalConfiguration.Configuration));
+            GlobalConfiguration.Configuration.Services.Replace(typeof(IHttpControllerActivator), new DefaultSystemWebApiHttpControllerActivator(GlobalConfiguration.Configuration));
+            GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver(container);
+//
+            GlobalConfiguration.Configuration.Filters.Add(new SystemApiActionFilterDispatcher());
+            GlobalConfiguration.Configuration.Filters.Add(new SystemApiExceptionFilterDispatcher());
+            GlobalConfiguration.Configuration.Filters.Add(new SystemApiAuthorizationFilterDispatcher());
+
+            ViewEngines.Engines.Clear();
+            ViewEngines.Engines.Add(new ThemeAwareViewEngineShim());
+//
+            var hostContainer = new DefaultSystemHostContainer(container);
+            //MvcServiceLocator.SetCurrent(hostContainer);
+            OrchardHostContainerRegistry.RegisterHostContainer(hostContainer);
+//
+//            // Register localized data annotations
+            ModelValidatorProviders.Providers.Clear();
+            ModelValidatorProviders.Providers.Add(new LocalizedModelValidatorProvider());
             
             
             

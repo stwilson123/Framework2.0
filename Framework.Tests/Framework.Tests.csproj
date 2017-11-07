@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac, Version=4.6.2.0, Culture=neutral, PublicKeyToken=17863af14b0044da">
+      <HintPath>..\packages\Autofac.4.6.2\lib\net45\Autofac.dll</HintPath>
+    </Reference>
     <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc">
       <HintPath>..\packages\Castle.Core.4.2.1\lib\net45\Castle.Core.dll</HintPath>
     </Reference>
@@ -57,11 +60,30 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Environment\StubHostEnvironment.cs" />
+    <Compile Include="FileSystems\AppData\AppDataFolderTests.cs" />
+    <Compile Include="FileSystems\Dependencies\AssemblyProbingFolderTests.cs" />
+    <Compile Include="FileSystems\Dependencies\DependenciesFolderTests.cs" />
+    <Compile Include="FileSystems\LockFile\LockFileManagerTests.cs" />
+    <Compile Include="Localization\LocalizationStreamParserTests.cs" />
+    <Compile Include="Localization\NullLocalizerTests.cs" />
+    <Compile Include="Logging\LoggingModuleTests.cs" />
+    <Compile Include="Stub\StubAppDataFolder.cs" />
+    <Compile Include="Stub\StubCacheManager.cs" />
+    <Compile Include="Stub\StubClock.cs" />
+    <Compile Include="Stub\StubFileSystem.cs" />
+    <Compile Include="Stub\StubVirtualPathMonitor.cs" />
     <Compile Include="Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Framework\Framework.csproj">
+      <Project>{050d2ccc-8150-4e9d-b7ab-33ed8ae86c46}</Project>
+      <Name>Framework</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

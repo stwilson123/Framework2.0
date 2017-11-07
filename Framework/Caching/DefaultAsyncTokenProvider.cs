@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
-using Orchard.Logging;
-using Orchard.Exceptions;
+using Framework.Exceptions;
+using Framework.Logging;
 
-namespace Orchard.Caching {
+namespace Framework.Caching
+{
     public class DefaultAsyncTokenProvider : IAsyncTokenProvider {
         public DefaultAsyncTokenProvider() {
             Logger = NullLogger.Instance;

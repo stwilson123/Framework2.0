@@ -43,14 +43,32 @@
       <HintPath>..\packages\Castle.Core.4.2.1\lib\net45\Castle.Core.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.Extensions.Configuration, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60">
-      <HintPath>..\packages\Microsoft.Extensions.Configuration.1.0.0\lib\netstandard1.1\Microsoft.Extensions.Configuration.dll</HintPath>
+    <Reference Include="Microsoft.Extensions.Configuration, Version=2.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.2.0.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Extensions.Configuration.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60">
-      <HintPath>..\packages\Microsoft.Extensions.Configuration.Abstractions.1.0.0\lib\netstandard1.0\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
+    <Reference Include="Microsoft.Extensions.Configuration.Abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Abstractions.2.0.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Extensions.Primitives, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60">
-      <HintPath>..\packages\Microsoft.Extensions.Primitives.1.0.0\lib\netstandard1.0\Microsoft.Extensions.Primitives.dll</HintPath>
+    <Reference Include="Microsoft.Extensions.Configuration.FileExtensions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.FileExtensions.2.0.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.FileExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Xml, Version=2.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Xml.2.0.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.Xml.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.FileProviders.Abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60">
+      <HintPath>..\packages\Microsoft.Extensions.FileProviders.Abstractions.2.0.0\lib\netstandard2.0\Microsoft.Extensions.FileProviders.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.FileProviders.Physical, Version=2.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60">
+      <HintPath>..\packages\Microsoft.Extensions.FileProviders.Physical.2.0.0\lib\netstandard2.0\Microsoft.Extensions.FileProviders.Physical.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.FileSystemGlobbing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60">
+      <HintPath>..\packages\Microsoft.Extensions.FileSystemGlobbing.2.0.0\lib\netstandard2.0\Microsoft.Extensions.FileSystemGlobbing.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=2.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60">
+      <HintPath>..\packages\Microsoft.Extensions.Primitives.2.0.0\lib\netstandard2.0\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.Owin.3.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
@@ -58,7 +76,11 @@
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
       <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
@@ -71,11 +93,17 @@
     <Reference Include="System.Runtime, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <HintPath>..\packages\System.Runtime.4.1.0\lib\net462\System.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.4.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Extensions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <HintPath>..\packages\System.Runtime.Extensions.4.1.0\lib\net462\System.Runtime.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.InteropServices, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <HintPath>..\packages\System.Runtime.InteropServices.4.1.0\lib\net462\System.Runtime.InteropServices.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
+      <HintPath>..\packages\System.Security.Cryptography.Xml.4.4.0\lib\net461\System.Security.Cryptography.Xml.dll</HintPath>
     </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
@@ -83,6 +111,9 @@
     </Reference>
     <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
       <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
@@ -103,13 +134,20 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutofacExtend\Config\ConfigurationSettingsReader.cs" />
+    <Compile Include="AutofacExtend\Config\ConfigurationSettingsReaderConstants.cs" />
+    <Compile Include="AutofacExtend\DynamicProxy2\ConstructorFinderWrapper.cs" />
+    <Compile Include="AutofacExtend\DynamicProxy2\DynamicProxyContext.cs" />
+    <Compile Include="AutofacExtend\DynamicProxy2\DynamicProxyExtensions.cs" />
     <Compile Include="Caching\AcquireContext.cs" />
     <Compile Include="Caching\Cache.cs" />
     <Compile Include="Caching\CacheModule.cs" />
+    <Compile Include="Caching\DefaultAsyncTokenProvider.cs" />
     <Compile Include="Caching\DefaultCacheContextAccessor.cs" />
     <Compile Include="Caching\DefaultCacheHolder.cs" />
     <Compile Include="Caching\DefaultCacheManager.cs" />
     <Compile Include="Caching\DefaultParallelCacheContext.cs" />
+    <Compile Include="Caching\IAsyncTokenProvider.cs" />
     <Compile Include="Caching\ICache.cs" />
     <Compile Include="Caching\ICacheContextAccessor.cs" />
     <Compile Include="Caching\ICacheHolder.cs" />
@@ -117,6 +155,12 @@
     <Compile Include="Caching\IParallelCacheContext.cs" />
     <Compile Include="Caching\IVolatileProvider.cs" />
     <Compile Include="Caching\IVolatileToken.cs" />
+    <Compile Include="Caching\Weak.cs" />
+    <Compile Include="ContentManagement\XmlHelper.cs" />
+    <Compile Include="Data\ISessionConfigurationEvents.cs" />
+    <Compile Include="Data\ITransactionManager.cs" />
+    <Compile Include="Data\ISessionConfigurationCache.cs" />
+    <Compile Include="Data\SessionConfigurationCache.cs" />
     <Compile Include="Environment\AppDomainAssemblyNameResolver.cs" />
     <Compile Include="Environment\Assemblys\AppDomainAssemblyNameResolver.cs" />
     <Compile Include="Environment\Assemblys\AspNetAssemblyBuilder.cs" />
@@ -131,14 +175,22 @@
     <Compile Include="Environment\Configuration\AppConfigurationAccessor.cs" />
     <Compile Include="Environment\Configuration\ExtensionLocations.cs" />
     <Compile Include="Environment\Configuration\IAppConfigurationAccessor.cs" />
+    <Compile Include="Environment\Configuration\IShellSettingsManager.cs" />
     <Compile Include="Environment\Configuration\IShellSettingsManagerEventHandler.cs" />
     <Compile Include="Environment\Configuration\ShellSettings.cs" />
+    <Compile Include="Environment\Configuration\ShellSettingsManager.cs" />
+    <Compile Include="Environment\Configuration\ShellSettingsSerializer.cs" />
     <Compile Include="Environment\Configuration\TenantState.cs" />
     <Compile Include="Environment\DefaultHostEnvironment.cs" />
     <Compile Include="Environment\DefaultHostLocalRestart.cs" />
+    <Compile Include="Environment\DefaultSystemHostContainer.cs" />
+    <Compile Include="Environment\DefaultSystemHost.cs" />
+    <Compile Include="Environment\DefaultSystemShell.cs" />
+    <Compile Include="Environment\Descriptor\IShellDescriptorCache.cs" />
     <Compile Include="Environment\Descriptor\IShellDescriptorManager.cs" />
     <Compile Include="Environment\Descriptor\IShellDescriptorManagerEventHandler.cs" />
     <Compile Include="Environment\Descriptor\Models\ShellDescriptor.cs" />
+    <Compile Include="Environment\Descriptor\ShellDescriptorCache.cs" />
     <Compile Include="Environment\Extensions\Compilers\CompileExtensionContext.cs" />
     <Compile Include="Environment\Extensions\Compilers\DefaultExtensionCompiler.cs" />
     <Compile Include="Environment\Extensions\Compilers\DefaultProjectFileParser.cs" />
@@ -149,22 +201,60 @@
     <Compile Include="Environment\Extensions\Compilers\ReferenceType.cs" />
     <Compile Include="Environment\Extensions\DefaultCriticalErrorProvider.cs" />
     <Compile Include="Environment\Extensions\ExtensionEntry.cs" />
+    <Compile Include="Environment\Extensions\ExtensionLoaderCoordinator.cs" />
     <Compile Include="Environment\Extensions\ExtensionLoadingContext.cs" />
+    <Compile Include="Environment\Extensions\ExtensionManager.cs" />
+    <Compile Include="Environment\Extensions\ExtensionManagerExtensions.cs" />
+    <Compile Include="Environment\Extensions\ExtensionMonitoringCoordinator.cs" />
+    <Compile Include="Environment\Extensions\Folders\CoreModuleFolders.cs" />
+    <Compile Include="Environment\Extensions\Folders\ExtensionHarvester.cs" />
+    <Compile Include="Environment\Extensions\Folders\IExtensionFolders.cs" />
+    <Compile Include="Environment\Extensions\Folders\IExtensionHarvester.cs" />
+    <Compile Include="Environment\Extensions\Folders\ModuleFolders.cs" />
+    <Compile Include="Environment\Extensions\Folders\ThemeFolders.cs" />
     <Compile Include="Environment\Extensions\ICriticalErrorProvider.cs" />
+    <Compile Include="Environment\Extensions\IExtensionLoaderCoordinator.cs" />
+    <Compile Include="Environment\Extensions\IExtensionManager.cs" />
+    <Compile Include="Environment\Extensions\IExtensionMonitoringCoordinator.cs" />
+    <Compile Include="Environment\Extensions\Loaders\CoreExtensionLoader.cs" />
+    <Compile Include="Environment\Extensions\Loaders\DynamicExtensionLoader.cs" />
+    <Compile Include="Environment\Extensions\Loaders\ExtensionLoaderBase.cs" />
     <Compile Include="Environment\Extensions\Loaders\IExtensionLoader.cs" />
+    <Compile Include="Environment\Extensions\Loaders\PrecompiledExtensionLoader.cs" />
+    <Compile Include="Environment\Extensions\Loaders\RawThemeExtensionLoader.cs" />
+    <Compile Include="Environment\Extensions\Loaders\ReferencedExtensionLoader.cs" />
     <Compile Include="Environment\Extensions\Models\DefaultExtensionTypes.cs" />
     <Compile Include="Environment\Extensions\Models\ExtensionDescriptor.cs" />
     <Compile Include="Environment\Extensions\Models\Feature.cs" />
     <Compile Include="Environment\Extensions\Models\FeatureDescriptor.cs" />
+    <Compile Include="Environment\Extensions\Models\LifecycleStatus.cs" />
+    <Compile Include="Environment\Extensions\SystemFeatureAttribute.cs" />
+    <Compile Include="Environment\Extensions\SystemSuppressDependencyAttribute.cs" />
     <Compile Include="Environment\GacAssemblyNameResolver.cs" />
+    <Compile Include="Environment\HostComponentsConfigModule.cs" />
     <Compile Include="Environment\HostEnvironment.cs" />
     <Compile Include="Environment\IHostEnvironment.cs" />
     <Compile Include="Environment\IHostLocalRestart.cs" />
+    <Compile Include="Environment\ISystemHostContainer.cs" />
+    <Compile Include="Environment\IShim.cs" />
+    <Compile Include="Environment\ISystemShellEvents.cs" />
+    <Compile Include="Environment\IShellContainerRegistrations.cs" />
     <Compile Include="Environment\ISystemHost.cs" />
     <Compile Include="Environment\ISystemShell.cs" />
+    <Compile Include="Environment\OrchardHostContainerRegistry.cs" />
     <Compile Include="Environment\RunningShellTable.cs" />
+    <Compile Include="Environment\ShellBuilder\CompositionStrategy.cs" />
+    <Compile Include="Environment\ShellBuilder\ICompositionStrategy.cs" />
+    <Compile Include="Environment\ShellBuilder\IShellContainerFactory.cs" />
+    <Compile Include="Environment\ShellBuilder\IShellContextFactory.cs" />
     <Compile Include="Environment\ShellBuilder\Models\ShellBlueprint.cs" />
+    <Compile Include="Environment\ShellBuilder\ShellContainerFactory.cs" />
     <Compile Include="Environment\ShellBuilder\ShellContext.cs" />
+    <Compile Include="Environment\ShellBuilder\ShellContextFactory.cs" />
+    <Compile Include="Environment\ShellContainerRegistrations.cs" />
+    <Compile Include="Environment\State\ContextState.cs" />
+    <Compile Include="Environment\State\DefaultProcessingEngine.cs" />
+    <Compile Include="Environment\State\IProcessingEngine.cs" />
     <Compile Include="Environment\SystemFrameworkAssemblyNameResolver.cs" />
     <Compile Include="Environment\SystemStarter.cs" />
     <Compile Include="Events\DefaultOrchardEventBus.cs" />
@@ -184,7 +274,10 @@
     <Compile Include="FileSystems\AppData\AppDataFolderRoot.cs" />
     <Compile Include="FileSystems\AppData\IAppDataFolder.cs" />
     <Compile Include="FileSystems\AppData\IAppDataFolderRoot.cs" />
+    <Compile Include="FileSystems\Dependencies\DefaultAssemblyProbingFolder.cs" />
+    <Compile Include="FileSystems\Dependencies\DefaultDependenciesFolder.cs" />
     <Compile Include="FileSystems\Dependencies\DynamicModuleVirtualPathProvider.cs" />
+    <Compile Include="FileSystems\Dependencies\IAssemblyProbingFolder.cs" />
     <Compile Include="FileSystems\Dependencies\IDependenciesFolder.cs" />
     <Compile Include="FileSystems\Dependencies\IExtensionDependenciesManager.cs" />
     <Compile Include="FileSystems\Dependencies\Models\ActivatedExtensionDescriptor.cs" />
@@ -194,6 +287,8 @@
     <Compile Include="FileSystems\LockFile\LockFile.cs" />
     <Compile Include="FileSystems\LockFile\ILockFile.cs" />
     <Compile Include="FileSystems\LockFile\ILockFileManager.cs" />
+    <Compile Include="FileSystems\VirtualPath\DefaultVirtualPathMonitor.cs" />
+    <Compile Include="FileSystems\VirtualPath\DefaultVirtualPathProvider.cs" />
     <Compile Include="FileSystems\VirtualPath\ICustomVirtualPathProvider.cs" />
     <Compile Include="FileSystems\VirtualPath\IVirtualPathMonitor.cs" />
     <Compile Include="FileSystems\VirtualPath\IVirtualPathProvider.cs" />
@@ -201,6 +296,8 @@
     <Compile Include="FileSystems\WebSite\WebSiteFolder.cs" />
     <Compile Include="IDependency.cs" />
     <Compile Include="IWorkContextAccessor.cs" />
+    <Compile Include="Localization\IText.cs" />
+    <Compile Include="Localization\LocalizationUtilities.cs" />
     <Compile Include="Localization\LocalizedString.cs" />
     <Compile Include="Localization\Localizer.cs" />
     <Compile Include="Localization\NullLocalizer.cs" />
@@ -210,20 +307,45 @@
     <Compile Include="Logging\LoggingModule.cs" />
     <Compile Include="Logging\NullLogger.cs" />
     <Compile Include="Logging\NullLoggerFactory.cs" />
+    <Compile Include="Mvc\DataAnnotations\LocalizedModelValidatorProvider.cs" />
+    <Compile Include="Mvc\DataAnnotations\LocalizedRangeAttribute.cs" />
+    <Compile Include="Mvc\DataAnnotations\LocalizedRegularExpressionAttribute.cs" />
+    <Compile Include="Mvc\DataAnnotations\LocalizedRequiredAttribute.cs" />
+    <Compile Include="Mvc\DataAnnotations\LocalizedStringLengthAttribute.cs" />
     <Compile Include="Mvc\Extensions\HttpContextBaseExtensions.cs" />
     <Compile Include="Mvc\Extensions\RouteExtension.cs" />
+    <Compile Include="Mvc\Filters\SystemFilterProvider.cs" />
     <Compile Include="Mvc\HttpContextAccessor.cs" />
     <Compile Include="Mvc\IHasRequestContext.cs" />
     <Compile Include="Mvc\IHttpContextAccessor.cs" />
+    <Compile Include="Mvc\ModelBinders\IModelBinderProvider.cs" />
+    <Compile Include="Mvc\ModelBinders\IModelBinderPublisher.cs" />
+    <Compile Include="Mvc\ModelBinders\ModelBinderDescriptor.cs" />
     <Compile Include="Mvc\MvcModule.cs" />
+    <Compile Include="Mvc\SystemControllerFactory.cs" />
+    <Compile Include="Mvc\Routes\HttpRouteDescriptor.cs" />
+    <Compile Include="Mvc\Routes\IHttpRouteProvider.cs" />
+    <Compile Include="Mvc\Routes\IRouteProvider.cs" />
+    <Compile Include="Mvc\Routes\IRoutePublisher.cs" />
+    <Compile Include="Mvc\Routes\RouteDescriptor.cs" />
     <Compile Include="Mvc\Routes\ShellRoute.cs" />
     <Compile Include="Mvc\Routes\UrlPrefix.cs" />
     <Compile Include="Mvc\Routes\UrlPrefixAdjustedHttpContext.cs" />
+    <Compile Include="Mvc\ViewEngines\IViewEngineProvider.cs" />
     <Compile Include="Mvc\ViewEngines\Razor\DefaultRazorCompilationEvents.cs" />
     <Compile Include="Mvc\ViewEngines\Razor\IRazorCompilationEvents.cs" />
+    <Compile Include="Mvc\ViewEngines\ThemeAwareness.cs" />
+    <Compile Include="Mvc\ViewEngines\ThemeAwareness\ConfiguredEnginesCache.cs" />
+    <Compile Include="Mvc\ViewEngines\ThemeAwareness\IConfiguredEnginesCache.cs" />
+    <Compile Include="Mvc\ViewEngines\ThemeAwareness\IThemeAwareViewEngine.cs" />
+    <Compile Include="Mvc\ViewEngines\ThemeAwareness\ThemeAwareViewEngine.cs" />
+    <Compile Include="Mvc\ViewEngines\ThemeAwareness\ViewEngineCollectionWrapper.cs" />
     <Compile Include="Mvc\Wrappers\HttpContextBaseWrapper.cs" />
     <Compile Include="Mvc\Wrappers\HttpRequestBaseWrapper.cs" />
     <Compile Include="Mvc\Wrappers\HttpResponseBaseWrapper.cs" />
+    <Compile Include="Owin\IOwinMiddlewareProvider.cs" />
+    <Compile Include="Owin\OrchardMiddleware.cs" />
+    <Compile Include="Owin\OwinMiddlewareRegistration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\IUser.cs" />
     <Compile Include="Security\SystemSecurityException.cs" />
@@ -232,12 +354,33 @@
     <Compile Include="Settings\ISite.cs" />
     <Compile Include="Settings\ISiteService.cs" />
     <Compile Include="Settings\ResourceDebugMode.cs" />
+    <Compile Include="Tasks\BackgroundService.cs" />
+    <Compile Include="Tasks\IBackgroundService.cs" />
+    <Compile Include="Tasks\IBackgroundTask.cs" />
+    <Compile Include="Tasks\ISweepGenerator.cs" />
     <Compile Include="Tasks\SweepGenerator.cs" />
+    <Compile Include="UI\FlatPositionComparer.cs" />
     <Compile Include="UI\Resources\IResourceFileHashProvider.cs" />
     <Compile Include="UI\Resources\ResourceFileHashProvider.cs" />
+    <Compile Include="Utility\DependencyOrdering.cs" />
     <Compile Include="Utility\Extensions\HttpRequestExtensions.cs" />
+    <Compile Include="Utility\Extensions\ReadOnlyCollectionExtensions.cs" />
+    <Compile Include="Utility\Extensions\StringExtensions.cs" />
+    <Compile Include="Utility\Extensions\VirtualPathProviderExtensions.cs" />
+    <Compile Include="Utility\Hash.cs" />
+    <Compile Include="Utility\NamedReaderWriterLock.cs" />
+    <Compile Include="Utility\ReflectionHelper.cs" />
     <Compile Include="Validation\Argument.cs" />
     <Compile Include="Validation\PathValidation.cs" />
+    <Compile Include="WebApi\AutofacWebApiDependencyResolver.cs" />
+    <Compile Include="WebApi\AutofacWebApiDependencyScope.cs" />
+    <Compile Include="WebApi\DefaultSystemWebApiHttpControllerActivator.cs" />
+    <Compile Include="WebApi\DefaultSystemWebApiHttpControllerSelector.cs" />
+    <Compile Include="WebApi\Extensions\RouteExtension.cs" />
+    <Compile Include="WebApi\Filters\SystemApiAuthorizationFilterDispatcher.cs" />
+    <Compile Include="WebApi\Filters\SystemApiExceptionFilterDispatcher.cs" />
+    <Compile Include="WebApi\Filters\SystemApiActionFilterDispatcher.cs" />
+    <Compile Include="WebApi\IApiFilterProvider.cs" />
     <Compile Include="WorkContext.cs" />
     <Compile Include="WorkContextExtensions.cs" />
   </ItemGroup>
