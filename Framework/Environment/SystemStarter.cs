@@ -159,7 +159,7 @@ namespace Framework.Environment
             FilterProviders.Providers.Add(new SystemFilterProvider());
 //
             GlobalConfiguration.Configuration.Services.Replace(typeof(IHttpControllerSelector), new DefaultSystemWebApiHttpControllerSelector(GlobalConfiguration.Configuration));
-            GlobalConfiguration.Configuration.Services.Replace(typeof(IHttpControllerActivator), new DefaultSystemWebApiHttpControllerActivator(GlobalConfiguration.Configuration));
+            GlobalConfiguration.Configuration.Services.Replace(typeof(System.Web.Http.Dispatcher.IHttpControllerActivator), new DefaultSystemWebApiHttpControllerActivator(GlobalConfiguration.Configuration));
             GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver(container);
 //
             GlobalConfiguration.Configuration.Filters.Add(new SystemApiActionFilterDispatcher());
@@ -171,7 +171,7 @@ namespace Framework.Environment
 //
             var hostContainer = new DefaultSystemHostContainer(container);
             //MvcServiceLocator.SetCurrent(hostContainer);
-            OrchardHostContainerRegistry.RegisterHostContainer(hostContainer);
+            SystemHostContainerRegistry.RegisterHostContainer(hostContainer);
 //
 //            // Register localized data annotations
             ModelValidatorProviders.Providers.Clear();

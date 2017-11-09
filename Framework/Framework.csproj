@@ -241,7 +241,7 @@
     <Compile Include="Environment\IShellContainerRegistrations.cs" />
     <Compile Include="Environment\ISystemHost.cs" />
     <Compile Include="Environment\ISystemShell.cs" />
-    <Compile Include="Environment\OrchardHostContainerRegistry.cs" />
+    <Compile Include="Environment\SystemHostContainerRegistry.cs" />
     <Compile Include="Environment\RunningShellTable.cs" />
     <Compile Include="Environment\ShellBuilder\CompositionStrategy.cs" />
     <Compile Include="Environment\ShellBuilder\ICompositionStrategy.cs" />
@@ -362,6 +362,7 @@
     <Compile Include="UI\FlatPositionComparer.cs" />
     <Compile Include="UI\Resources\IResourceFileHashProvider.cs" />
     <Compile Include="UI\Resources\ResourceFileHashProvider.cs" />
+    <Compile Include="Utility\Container\LazyConcurrentDictionary.cs" />
     <Compile Include="Utility\DependencyOrdering.cs" />
     <Compile Include="Utility\Extensions\HttpRequestExtensions.cs" />
     <Compile Include="Utility\Extensions\ReadOnlyCollectionExtensions.cs" />

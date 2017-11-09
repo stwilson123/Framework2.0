@@ -42,6 +42,9 @@
     <Reference Include="Moq, Version=4.7.142.0, Culture=neutral, PublicKeyToken=69f491c39445e920">
       <HintPath>..\packages\Moq.4.7.142\lib\net45\Moq.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
@@ -60,11 +63,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cache\CacheScopeTests.cs" />
+    <Compile Include="Cache\CacheTests.cs" />
+    <Compile Include="Cache\ClockCachingTests.cs" />
     <Compile Include="Environment\StubHostEnvironment.cs" />
     <Compile Include="FileSystems\AppData\AppDataFolderTests.cs" />
     <Compile Include="FileSystems\Dependencies\AssemblyProbingFolderTests.cs" />
     <Compile Include="FileSystems\Dependencies\DependenciesFolderTests.cs" />
     <Compile Include="FileSystems\LockFile\LockFileManagerTests.cs" />
+    <Compile Include="FileSystems\VirtualPath\DefaultVirtualPathProviderTests.cs" />
     <Compile Include="Localization\LocalizationStreamParserTests.cs" />
     <Compile Include="Localization\NullLocalizerTests.cs" />
     <Compile Include="Logging\LoggingModuleTests.cs" />
@@ -75,6 +82,7 @@
     <Compile Include="Stub\StubVirtualPathMonitor.cs" />
     <Compile Include="Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utility\Container\ConcurrentDictionaryTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

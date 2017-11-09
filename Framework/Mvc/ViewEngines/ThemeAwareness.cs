@@ -8,7 +8,7 @@ namespace Framework.Mvc.ViewEngines
 {
     public class ThemeAwareViewEngineShim : IViewEngine, IShim {
         public ThemeAwareViewEngineShim() {
-            OrchardHostContainerRegistry.RegisterShim(this);
+            SystemHostContainerRegistry.RegisterShim(this);
         }
 
         public ISystemHostContainer HostContainer { get; set; }

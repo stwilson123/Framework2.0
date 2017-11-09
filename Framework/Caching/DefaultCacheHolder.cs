@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Concurrent;
+using Framework.Utility.Container;
 
 namespace Framework.Caching {
     /// <summary>
@@ -8,7 +9,7 @@ namespace Framework.Caching {
     /// </summary>
     public class DefaultCacheHolder : ICacheHolder {
         private readonly ICacheContextAccessor _cacheContextAccessor;
-        private readonly ConcurrentDictionary<CacheKey, object> _caches = new ConcurrentDictionary<CacheKey, object>();
+        private readonly LazyConcurrentDictionary<CacheKey, object> _caches = new LazyConcurrentDictionary<CacheKey, object>();
 
         public DefaultCacheHolder(ICacheContextAccessor cacheContextAccessor) {
             _cacheContextAccessor = cacheContextAccessor;

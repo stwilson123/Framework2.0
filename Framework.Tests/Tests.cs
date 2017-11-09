@@ -1,10 +1,20 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using Xunit;
 
 namespace Framework.Tests
 {
+    public interface Idata
+    {
+        
+    }
+
+    public class Data : Idata
+    {
+        public string a;
+    }
     public class Tests
     {
         [Fact]
@@ -16,6 +26,12 @@ namespace Framework.Tests
 
             }, "123");
                 
+        }
+        
+        [Fact]
+        public void Test2()
+        {
+           var str=  JsonConvert.SerializeObject(new Data() {a = "123"});
         }
         
         /// <summary>

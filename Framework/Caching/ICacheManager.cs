@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Concurrent;
+using Framework.Utility.Container;
 
 namespace Framework.Caching {
     public interface ICacheManager {

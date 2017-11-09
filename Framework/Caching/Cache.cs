@@ -2,15 +2,16 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
+using Framework.Utility.Container;
 
 namespace Framework.Caching {
     public class Cache<TKey, TResult> : ICache<TKey, TResult> {
         private readonly ICacheContextAccessor _cacheContextAccessor;
-        private readonly ConcurrentDictionary<TKey, CacheEntry> _entries;
+        private readonly LazyConcurrentDictionary<TKey, CacheEntry> _entries;
 
         public Cache(ICacheContextAccessor cacheContextAccessor) {
             _cacheContextAccessor = cacheContextAccessor;
-            _entries = new ConcurrentDictionary<TKey, CacheEntry>();
+            _entries = new LazyConcurrentDictionary<TKey, CacheEntry>();
         }
 
         public TResult Get(TKey key, Func<AcquireContext<TKey>, TResult> acquire) {

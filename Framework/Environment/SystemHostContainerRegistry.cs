@@ -6,7 +6,7 @@ namespace Framework.Environment
     /// <summary>
     /// Provides ability to connect Shims to the OrchardHostContainer
     /// </summary>
-    public static class OrchardHostContainerRegistry {
+    public static class SystemHostContainerRegistry {
         private static readonly IList<Weak<IShim>> _shims = new List<Weak<IShim>>();
         private static ISystemHostContainer _hostContainer;
         private static readonly object _syncLock = new object();
