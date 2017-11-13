@@ -10,6 +10,7 @@ namespace Framework.AutofacExtend.DynamicProxy2
 {
     public class DynamicProxyContext {
         const string ProxyContextKey = "Framework.AutofacExtend.DynamicProxy2.DynamicProxyContext.ProxyContextKey";
+                                       
         const string InterceptorServicesKey = "Framework.AutofacExtend.DynamicProxy2.DynamicProxyContext.InterceptorServicesKey";
 
         readonly IProxyBuilder _proxyBuilder = new DefaultProxyBuilder();
@@ -50,6 +51,11 @@ namespace Framework.AutofacExtend.DynamicProxy2
                     var parameter = new PositionalParameter(0, interceptors);
                     e.Parameters = new[] { parameter }.Concat(e.Parameters).ToArray();
                 }
+            });
+
+            registrationBuilder.OnActivating(e =>
+            {
+                
             });
         }
 

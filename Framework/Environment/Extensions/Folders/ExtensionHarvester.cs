@@ -18,7 +18,7 @@ namespace Framework.Environment.Extensions.Folders
         private const string PathSection = "path";
         private const string DescriptionSection = "description";
         private const string VersionSection = "version";
-        private const string OrchardVersionSection = "orchardversion";
+        private const string SystemVersionSection = "systemversion";
         private const string AuthorSection = "author";
         private const string WebsiteSection = "website";
         private const string TagsSection = "tags";
@@ -123,7 +123,7 @@ namespace Framework.Environment.Extensions.Folders
                 Path = GetValue(manifest, PathSection),
                 Description = GetValue(manifest, DescriptionSection),
                 Version = GetValue(manifest, VersionSection),
-                SystemVersion = GetValue(manifest, OrchardVersionSection),
+                SystemVersion = GetValue(manifest, SystemVersionSection),
                 Author = GetValue(manifest, AuthorSection),
                 WebSite = GetValue(manifest, WebsiteSection),
                 Tags = GetValue(manifest, TagsSection),
@@ -185,8 +185,8 @@ namespace Framework.Environment.Extensions.Folders
                         case VersionSection:
                             manifest.Add(VersionSection, field[1]);
                             break;
-                        case OrchardVersionSection:
-                            manifest.Add(OrchardVersionSection, field[1]);
+                        case SystemVersionSection:
+                            manifest.Add(SystemVersionSection, field[1]);
                             break;
                         case AuthorSection:
                             manifest.Add(AuthorSection, field[1]);

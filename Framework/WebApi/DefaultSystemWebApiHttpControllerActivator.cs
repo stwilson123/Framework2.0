@@ -40,7 +40,7 @@ namespace Framework.WebApi
             return false;
         }
 
-        public IHttpController Create(HttpRequestMessage request, HttpControllerDescriptor controllerDescriptor, Type controllerType)
+        public IHttpController Create(System.Net.Http.HttpRequestMessage request, HttpControllerDescriptor controllerDescriptor, Type controllerType)
         {
             var routeData = request.GetRouteData();
 
@@ -68,8 +68,8 @@ namespace Framework.WebApi
 
             return null;
         }
-        
-       
 
+
+       
     }
 }

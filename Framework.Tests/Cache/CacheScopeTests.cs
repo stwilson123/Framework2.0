@@ -30,11 +30,11 @@ namespace Framework.Tests.Cache
 
         public CacheScopeTests()
         {
-           
+            Init();
         }
         [Fact]
         public void ComponentsAtHostLevelHaveAccessToCache() {
-            Init();
+            
             var alpha = _hostContainer.Resolve<Alpha>();
             Assert.NotNull(alpha.CacheManager);
         }

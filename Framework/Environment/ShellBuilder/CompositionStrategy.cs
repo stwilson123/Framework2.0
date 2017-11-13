@@ -7,6 +7,7 @@ using Autofac.Core;
 using Framework.Environment.Configuration;
 using Framework.Environment.Descriptor.Models;
 using Framework.Environment.Extensions;
+using Framework.Environment.Extensions.Attributes;
 using Framework.Environment.Extensions.Models;
 using Framework.Environment.ShellBuilder.Models;
 using Framework.Exceptions.Exception;
@@ -45,7 +46,7 @@ namespace Framework.Environment.ShellBuilder
             var featureDescriptors = _extensionManager.EnabledFeatures(expandedFeatures.Select(x => new ShellFeature { Name = x})).ToList();
             var features = _extensionManager.LoadFeatures(featureDescriptors);
 
-            if (descriptor.Features.Any(feature => feature.Name == "Orchard.Framework"))
+            if (descriptor.Features.Any(feature => feature.Name == "System.Framework"))
                 features = builtinFeatures.Concat(features);
 
             var excludedTypes = GetExcludedTypes(features);

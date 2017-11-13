@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Framework.Environment.Extensions
+namespace Framework.Environment.Extensions.Attributes
 {
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = true, Inherited = false)]
     public class SystemSuppressDependencyAttribute : Attribute {

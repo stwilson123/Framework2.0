@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Framework.Caching;
+using Framework.Environment.Extensions.Attributes;
 using Framework.Environment.Extensions.Folders;
 using Framework.Environment.Extensions.Loaders;
 using Framework.Environment.Extensions.Models;
@@ -156,7 +157,7 @@ namespace Framework.Environment.Extensions
         }
 
         private static string GetSourceFeatureNameForType(Type type, string extensionId) {
-            foreach (OrchardFeatureAttribute featureAttribute in type.GetCustomAttributes(typeof(OrchardFeatureAttribute), false)) {
+            foreach (SystemFeatureAttribute featureAttribute in type.GetCustomAttributes(typeof(SystemFeatureAttribute), false)) {
                 return featureAttribute.FeatureName;
             }
             return extensionId;

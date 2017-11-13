@@ -10,8 +10,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Framework.Tests</RootNamespace>
     <AssemblyName>Framework.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -39,6 +40,9 @@
     <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc">
       <HintPath>..\packages\Castle.Core.4.2.1\lib\net45\Castle.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
     <Reference Include="Moq, Version=4.7.142.0, Culture=neutral, PublicKeyToken=69f491c39445e920">
       <HintPath>..\packages\Moq.4.7.142\lib\net45\Moq.dll</HintPath>
     </Reference>
@@ -48,6 +52,28 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="xunit.abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c">
       <HintPath>..\packages\xunit.abstractions.2.0.0\lib\net35\xunit.abstractions.dll</HintPath>
@@ -66,7 +92,22 @@
     <Compile Include="Cache\CacheScopeTests.cs" />
     <Compile Include="Cache\CacheTests.cs" />
     <Compile Include="Cache\ClockCachingTests.cs" />
+    <Compile Include="ContainerTestBase.cs" />
+    <Compile Include="DatabaseEnabledTestsBase.cs" />
+    <Compile Include="Environment\AutofacUtil\AutofacTests.cs" />
+    <Compile Include="Environment\AutofacUtil\DynamicProxy2\DynamicProxyTests.cs" />
+    <Compile Include="Environment\Blueprint\DefaultShellDescriptorCacheTests.cs" />
+    <Compile Include="Environment\Configuration\DefaultTenantManagerTests.cs" />
+    <Compile Include="Environment\Extensions\ExtensionFoldersTests.cs" />
+    <Compile Include="Environment\Extensions\ExtensionLoaderCoordinatorTests.cs" />
+    <Compile Include="Environment\Extensions\ExtensionManagerTests.cs" />
+    <Compile Include="Environment\Extensions\ExtensionTypes\ExtensionTypes.cs" />
+    <Compile Include="Environment\Loaders\DynamicExtensionLoaderTests.cs" />
+    <Compile Include="Environment\ShellBuilders\CompositionStrategyTests.cs" />
+    <Compile Include="Environment\ShellBuilders\DefaultShellContainerFactoryTests.cs" />
     <Compile Include="Environment\StubHostEnvironment.cs" />
+    <Compile Include="Environment\TestDependencies\IAlphaDependency.cs" />
+    <Compile Include="Environment\TestDependencies\IBetaDependency.cs" />
     <Compile Include="FileSystems\AppData\AppDataFolderTests.cs" />
     <Compile Include="FileSystems\Dependencies\AssemblyProbingFolderTests.cs" />
     <Compile Include="FileSystems\Dependencies\DependenciesFolderTests.cs" />
@@ -80,11 +121,14 @@
     <Compile Include="Stub\StubClock.cs" />
     <Compile Include="Stub\StubFileSystem.cs" />
     <Compile Include="Stub\StubVirtualPathMonitor.cs" />
+    <Compile Include="Stub\StubVirtualPathProvider.cs" />
+    <Compile Include="Stub\StubWebSiteFolder.cs" />
     <Compile Include="Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\Container\ConcurrentDictionaryTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -92,6 +136,24 @@
       <Project>{050d2ccc-8150-4e9d-b7ab-33ed8ae86c46}</Project>
       <Name>Framework</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Environment\Extensions\FoldersData\Sample1\Module.txt" />
+    <EmbeddedResource Include="Environment\Extensions\FoldersData\Sample2\Two.txt" />
+    <EmbeddedResource Include="Environment\Extensions\FoldersData\Sample3\Module.txt" />
+    <EmbeddedResource Include="Environment\Extensions\FoldersData\Sample4\Module.txt" />
+    <EmbeddedResource Include="Environment\Extensions\FoldersData\Sample5\Module.txt" />
+    <EmbeddedResource Include="Environment\Extensions\FoldersData\Sample6\Module.txt" />
+    <EmbeddedResource Include="Environment\Extensions\FoldersData\Sample7\Module.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Environment\Features\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App.Config.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
