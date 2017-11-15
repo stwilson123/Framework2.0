@@ -78,9 +78,9 @@ namespace Framework.Environment.ShellBuilder
              var descriptor = new ShellDescriptor {
                  SerialNumber = -1,
                  Features = new[] {
-                     new ShellFeature { Name = "Orchard.Setup" },
+                     new ShellFeature { Name = "System.Setup" },
                      new ShellFeature { Name = "Shapes" },
-                     new ShellFeature { Name = "Orchard.Resources" }
+                     new ShellFeature { Name = "System.Resources" }
                  },
              };
  

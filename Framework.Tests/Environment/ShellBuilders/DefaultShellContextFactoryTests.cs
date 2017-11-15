@@ -81,11 +81,12 @@ namespace Framework.Tests.Environment.ShellBuilders
             Assert.Same(context.Descriptor, descriptor);
             Assert.Same(context.Blueprint, blueprint);
             Assert.Same(context.LifetimeScope, shellLifetimeScope);
+            //TODO why is same
             Assert.Same(context.Shell, shellLifetimeScope.Resolve<ISystemShell>());
         }
 
         [Fact]
-        public void CreatingSetupContextUsesOrchardSetupFeature()
+        public void CreatingSetupContextUsesSystemSetupFeature()
         {
             var settings = default(ShellSettings);
             var descriptor = default(ShellDescriptor);

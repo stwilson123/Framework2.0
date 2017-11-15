@@ -100,6 +100,7 @@
     <Compile Include="Environment\AutofacUtil\DynamicProxy2\DynamicProxyTests.cs" />
     <Compile Include="Environment\Blueprint\DefaultShellDescriptorCacheTests.cs" />
     <Compile Include="Environment\Configuration\DefaultTenantManagerTests.cs" />
+    <Compile Include="Environment\DefaultCompositionStrategyTests.cs" />
     <Compile Include="Environment\Extensions\ExtensionFoldersTests.cs" />
     <Compile Include="Environment\Extensions\ExtensionLoaderCoordinatorTests.cs" />
     <Compile Include="Environment\Extensions\ExtensionManagerTests.cs" />
@@ -108,9 +109,12 @@
     <Compile Include="Environment\ShellBuilders\CompositionStrategyTests.cs" />
     <Compile Include="Environment\ShellBuilders\DefaultShellContainerFactoryTests.cs" />
     <Compile Include="Environment\ShellBuilders\DefaultShellContextFactoryTests.cs" />
+    <Compile Include="Environment\State\DefaultProcessingEngineTests.cs" />
     <Compile Include="Environment\StubHostEnvironment.cs" />
     <Compile Include="Environment\TestDependencies\IAlphaDependency.cs" />
     <Compile Include="Environment\TestDependencies\IBetaDependency.cs" />
+    <Compile Include="Environment\Utility\Build.cs" />
+    <Compile Include="Environment\Warmup\WarmupUtilityTests.cs" />
     <Compile Include="FileSystems\AppData\AppDataFolderTests.cs" />
     <Compile Include="FileSystems\Dependencies\AssemblyProbingFolderTests.cs" />
     <Compile Include="FileSystems\Dependencies\DependenciesFolderTests.cs" />
@@ -119,6 +123,8 @@
     <Compile Include="Localization\LocalizationStreamParserTests.cs" />
     <Compile Include="Localization\NullLocalizerTests.cs" />
     <Compile Include="Logging\LoggingModuleTests.cs" />
+    <Compile Include="Records\BarRecord.cs" />
+    <Compile Include="Records\FooRecord.cs" />
     <Compile Include="Stub\StubAppDataFolder.cs" />
     <Compile Include="Stub\StubCacheManager.cs" />
     <Compile Include="Stub\StubClock.cs" />
@@ -142,6 +148,10 @@
       <Project>{050d2ccc-8150-4e9d-b7ab-33ed8ae86c46}</Project>
       <Name>Framework</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SystemStartUp\SystemStartUp.csproj">
+      <Project>{9B511E60-4EE8-4846-9C01-5723675A69F8}</Project>
+      <Name>SystemStartUp</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Environment\Extensions\FoldersData\Sample1\Module.txt" />
@@ -153,6 +163,7 @@
     <EmbeddedResource Include="Environment\Extensions\FoldersData\Sample7\Module.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Environment\Features" />
     <Folder Include="Environment\Features\" />
   </ItemGroup>
   <ItemGroup>
