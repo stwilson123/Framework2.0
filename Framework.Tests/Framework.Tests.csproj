@@ -34,7 +34,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Autofac, Version=4.6.2.0, Culture=neutral, PublicKeyToken=17863af14b0044da">
+    <Reference Include="Autofac, Version=4.6.2.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Autofac.4.6.2\lib\net45\Autofac.dll</HintPath>
     </Reference>
     <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc">
@@ -53,6 +54,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
     </Reference>
@@ -105,6 +107,7 @@
     <Compile Include="Environment\Loaders\DynamicExtensionLoaderTests.cs" />
     <Compile Include="Environment\ShellBuilders\CompositionStrategyTests.cs" />
     <Compile Include="Environment\ShellBuilders\DefaultShellContainerFactoryTests.cs" />
+    <Compile Include="Environment\ShellBuilders\DefaultShellContextFactoryTests.cs" />
     <Compile Include="Environment\StubHostEnvironment.cs" />
     <Compile Include="Environment\TestDependencies\IAlphaDependency.cs" />
     <Compile Include="Environment\TestDependencies\IBetaDependency.cs" />
@@ -120,12 +123,15 @@
     <Compile Include="Stub\StubCacheManager.cs" />
     <Compile Include="Stub\StubClock.cs" />
     <Compile Include="Stub\StubFileSystem.cs" />
+    <Compile Include="Stub\StubHttpContext.cs" />
+    <Compile Include="Stub\StubHttpContextAccessor.cs" />
     <Compile Include="Stub\StubVirtualPathMonitor.cs" />
     <Compile Include="Stub\StubVirtualPathProvider.cs" />
     <Compile Include="Stub\StubWebSiteFolder.cs" />
     <Compile Include="Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\Container\ConcurrentDictionaryTest.cs" />
+    <Compile Include="Utility\Container\ContainerExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

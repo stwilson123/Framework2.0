@@ -28,6 +28,17 @@ namespace Framework.AutofacExtend.DynamicProxy2
         }
 
         /// <summary>
+        /// Static method to resolve the context for a component registration. The context is set
+        /// by using the registration builder extension method EnableDynamicProxy(context).
+        /// </summary>
+        public static DynamicProxyContext From(RegistrationData registrationData)
+        {
+            object value;
+            if (registrationData.Metadata.TryGetValue(ProxyContextKey, out value))
+                return value as DynamicProxyContext;
+            return null;
+        }
+        /// <summary>
         /// Called indirectly from the EnableDynamicProxy extension method.
         /// Modifies a registration to support dynamic interception if needed, and act as a normal type otherwise.
         /// </summary>
@@ -42,9 +53,16 @@ namespace Framework.AutofacExtend.DynamicProxy2
             registrationBuilder.ActivatorData.ConstructorFinder = new ConstructorFinderWrapper(
                 registrationBuilder.ActivatorData.ConstructorFinder, this);
 
+            // add a proxy in advance,because ConstructorFinder event in autofac 4.0 later is fire before the autofac module AttachToComponentRegistration event.
+            // but is not in autofac 4.0 before.
+            // may be cause performance problems.
+            AddProxy(registrationBuilder.ActivatorData.ImplementationType);
+
+            
             // when component is being resolved, this even handler will place the array of appropriate interceptors as the first argument
             registrationBuilder.OnPreparing(e => {
                 object value;
+             
                 if (e.Component.Metadata.TryGetValue(InterceptorServicesKey, out value)) {
                     var interceptorServices = (IEnumerable<Service>)value;
                     var interceptors = interceptorServices.Select(service => e.Context.ResolveService(service)).Cast<IInterceptor>().ToArray();
@@ -53,10 +71,7 @@ namespace Framework.AutofacExtend.DynamicProxy2
                 }
             });
 
-            registrationBuilder.OnActivating(e =>
-            {
-                
-            });
+           
         }
 
         /// <summary>
@@ -74,6 +89,27 @@ namespace Framework.AutofacExtend.DynamicProxy2
 
             registration.Metadata[InterceptorServicesKey] = interceptorServices.Concat(new[] { service }).Distinct().ToArray();
         }
+
+
+        ///// <summary>
+        ///// Called indirectly from the InterceptedBy extension method.
+        ///// Adds services to the componenent's list of interceptors, activating the need for dynamic proxy
+        ///// </summary>
+        //public void AddInterceptorService<TLimit>(RegistrationData registrationData, params Service[] interceptorServices)
+        //{
+        //    AddProxy(typeof(TLimit));
+
+        //    var interceptorServicesConcat = Enumerable.Empty<Service>();
+        //    object value;
+        //    if (registrationData.Metadata.TryGetValue(InterceptorServicesKey, out value))
+        //    {
+        //        interceptorServicesConcat = (IEnumerable<Service>)value;
+        //    }
+
+        //    registrationData.Metadata[InterceptorServicesKey] = interceptorServicesConcat.Concat(interceptorServices ).Distinct().ToArray();
+
+
+        //}
 
 
         /// <summary>

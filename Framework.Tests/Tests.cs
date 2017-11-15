@@ -3,6 +3,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Xunit;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace Framework.Tests
 {
@@ -20,14 +22,26 @@ namespace Framework.Tests
         [Fact]
         public void Test1()
         {
-            var asyncResult = new WarmupAsyncResult((obj) =>
-            {
-                Thread.Sleep(10 * 1000);
+            //var asyncResult = new WarmupAsyncResult((obj) =>
+            //{
+            //    Thread.Sleep(10 * 1000);
 
-            }, "123");
-                
+            //}, "123");
+            var a = testYied(0);
+            List<object> list = new List<object>();
+            foreach (var item in a)
+            {
+                list.Add(item);
+            }
         }
-        
+        public IEnumerable testYied(int i)
+        {
+            if (i == 0)
+                yield return new int[5];
+            yield return new string[5];
+
+        }
+
         [Fact]
         public void Test2()
         {

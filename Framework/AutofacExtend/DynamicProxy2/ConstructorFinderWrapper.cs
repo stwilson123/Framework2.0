@@ -16,9 +16,9 @@ namespace Framework.AutofacExtend.DynamicProxy2
         public ConstructorInfo[] FindConstructors(Type targetType) {
             Type proxyType;
             if (_dynamicProxyContext.TryGetProxy(targetType, out proxyType)) {
-                return _constructorFinder.FindConstructors(proxyType);
+                 return _constructorFinder.FindConstructors(proxyType);
             }
-            return _constructorFinder.FindConstructors(targetType);
+              return _constructorFinder.FindConstructors(targetType);
         }
     }
 }

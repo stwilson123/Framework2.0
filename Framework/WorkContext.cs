@@ -6,29 +6,42 @@ using Framework.Settings;
 
 namespace Framework
 {
-  /// <summary>
+ /// <summary>
     /// A work context for work context scope
     /// </summary>
     public abstract class WorkContext {
         /// <summary>
-        /// Resolves a registered dependency type
+        /// Resolves a registered dependency type.
         /// </summary>
-        /// <typeparam name="T">The type of the dependency</typeparam>
-        /// <returns>An instance of the dependency if it could be resolved</returns>
+        /// <typeparam name="T">The type of the dependency.</typeparam>
+        /// <returns>An instance of the dependency if it could be resolved.</returns>
         public abstract T Resolve<T>();
 
         /// <summary>
-        /// Tries to resolve a registered dependency type
+        /// Resolves a registered dependency type.
         /// </summary>
-        /// <typeparam name="T">The type of the dependency</typeparam>
-        /// <param name="service">An instance of the dependency if it could be resolved</param>
-        /// <returns>True if the dependency could be resolved, false otherwise</returns>
+        /// <param name="serviceType">The type of the dependency.</param>
+        /// <returns>An instance of the dependency if it could be resolved.</returns>
+        public abstract object Resolve(Type serviceType);
+
+        /// <summary>
+        /// Tries to resolve a registered dependency type.
+        /// </summary>
+        /// <typeparam name="T">The type of the dependency.</typeparam>
+        /// <param name="service">An instance of the dependency if it could be resolved.</param>
+        /// <returns>True if the dependency could be resolved, false otherwise.</returns>
         public abstract bool TryResolve<T>(out T service);
 
+        /// <summary>
+        /// Tries to resolve a registered dependency type.
+        /// </summary>
+        /// <param name="serviceType">The type of the dependency.</param>
+        /// <param name="service">An instance of the dependency if it could be resolved.</param>
+        /// <returns>True if the dependency could be resolved, false otherwise.</returns>
+        public abstract bool TryResolve(Type serviceType, out object service);
 
         public abstract T GetState<T>(string name);
         public abstract void SetState<T>(string name, T value);
-
 
         /// <summary>
         /// The http context corresponding to the work context
@@ -76,6 +89,14 @@ namespace Framework
         public string CurrentCulture {
             get { return GetState<string>("CurrentCulture"); }
             set { SetState("CurrentCulture", value); }
+        }
+
+        /// <summary>
+        /// Active calendar of the work context
+        /// </summary>
+        public string CurrentCalendar {
+            get { return GetState<string>("CurrentCalendar"); }
+            set { SetState("CurrentCalendar", value); }
         }
 
         /// <summary>

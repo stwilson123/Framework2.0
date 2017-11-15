@@ -91,8 +91,9 @@ namespace Framework.Tests.Environment.ShellBuilders
             var controllers = shellContainer.Resolve<IIndex<string, IController>>();
             var controller = controllers["foo/bar"];
             Assert.NotNull(controller);
-            Assert.True((controller as TestController)  != null);
+            Assert.True((controller as TestController) != null);
         }
+      
 
         public class TestController : Controller {
         }
@@ -116,9 +117,11 @@ namespace Framework.Tests.Environment.ShellBuilders
 
 
         public class TestModule : Module {
-            protected override void AttachToComponentRegistration(IComponentRegistry componentRegistry, IComponentRegistration registration) {
-                registration.Metadata["Hello"] = "World";
-            }
+            protected override void AttachToComponentRegistration(IComponentRegistry componentRegistry, IComponentRegistration registration)
+            {
+                if (typeof(IContainer).IsAssignableFrom(registration.Activator.LimitType.BaseType))
+                    registration.Metadata["Hello"] = "World";
+            }    
         }
 
         [Fact]
@@ -208,7 +211,7 @@ namespace Framework.Tests.Environment.ShellBuilders
 
             blueprint.Dependencies.Single().Feature =
                 new Feature { Descriptor = new FeatureDescriptor { Id = "Hello" } };
-
+           
             var factory = _container.Resolve<IShellContainerFactory>();
             var shellContainer = factory.CreateContainer(settings, blueprint);
 
@@ -363,7 +366,8 @@ namespace Framework.Tests.Environment.ShellBuilders
         public class StubEventHandler3 : IStubEventHandlerB { }
 
         [Fact]
-        public void EventHandlersAreNamedAndResolvedCorrectly() {
+        public void EventHandlersAreNamedAndResolvedCorrectly()
+        {
             var settings = CreateSettings();
             var blueprint = CreateBlueprint(
                 WithDependency<StubEventHandler1>(),
@@ -378,9 +382,9 @@ namespace Framework.Tests.Environment.ShellBuilders
 
             Assert.NotNull(eventHandlers);
             Assert.Equal(eventHandlers.Count(), 2);
-            Assert.NotNull(eventHandlers[0] as StubEventHandler2);
-            Assert.NotNull(eventHandlers[1] as StubEventHandler1);
-                 }
+            Assert.Contains(eventHandlers, t => t.GetType().BaseType == typeof(StubEventHandler2));
+            Assert.Contains(eventHandlers, t => t.GetType().BaseType == typeof(StubEventHandler1));
+        }
 
         public interface ITestDecorator : IDependency { ITestDecorator DecoratedService { get; } }
         public class TestDecoratorImpl1 : ITestDecorator { public ITestDecorator DecoratedService => null; }
@@ -481,7 +485,7 @@ namespace Framework.Tests.Environment.ShellBuilders
 
             var factory = _container.Resolve<IShellContainerFactory>();
             var shellContainer = factory.CreateContainer(settings, blueprint);
-
+             
             var services = shellContainer.Resolve<IEnumerable<ITestDecorator>>().ToArray();
 
             Assert.NotNull(services);
@@ -489,12 +493,12 @@ namespace Framework.Tests.Environment.ShellBuilders
 
             foreach (var service in services)
             {
-                Assert.NotNull(service as  TestDecorator1);
+                Assert.NotNull(service.GetType().BaseType == typeof(TestDecorator1));
             }
 
-            Assert.NotNull(services[0].DecoratedService as TestDecoratorImpl1);
-            Assert.NotNull(services[1].DecoratedService as TestDecoratorImpl2);
-            Assert.NotNull(services[2].DecoratedService as TestDecoratorImpl3);
+            Assert.NotNull(services[0].DecoratedService.GetType().BaseType == typeof(TestDecoratorImpl1));
+            Assert.NotNull(services[1].DecoratedService.GetType().BaseType == typeof(TestDecoratorImpl2));
+            Assert.NotNull(services[2].DecoratedService.GetType().BaseType == typeof(TestDecoratorImpl3));
         }
 
         [Fact]
@@ -517,10 +521,10 @@ namespace Framework.Tests.Environment.ShellBuilders
 
             var service = services[0];
 
-            Assert.NotNull(service as TestDecorator3 );
-            Assert.NotNull(service.DecoratedService as TestDecorator2 );
-            Assert.NotNull(service.DecoratedService.DecoratedService as TestDecorator1 );
-            Assert.NotNull(service.DecoratedService.DecoratedService.DecoratedService as TestDecoratorImpl1 );
+            Assert.NotNull(service.GetType().BaseType == typeof(TestDecorator3) );
+            Assert.NotNull(service.DecoratedService.GetType().BaseType == typeof(TestDecorator2) );
+            Assert.NotNull(service.DecoratedService.DecoratedService.GetType().BaseType == typeof(TestDecorator1) );
+            Assert.NotNull(service.DecoratedService.DecoratedService.DecoratedService.GetType().BaseType == typeof(TestDecoratorImpl1) );
         }
 
         [Fact]
@@ -545,14 +549,14 @@ namespace Framework.Tests.Environment.ShellBuilders
 
             foreach (var service in services)
             {
-                Assert.NotNull(service as TestDecorator3 );
-                Assert.NotNull(service.DecoratedService as TestDecorator2);
-                Assert.NotNull(service.DecoratedService.DecoratedService as TestDecorator1);
+                Assert.NotNull(service.GetType().BaseType == typeof(TestDecorator3));
+                Assert.NotNull(service.DecoratedService.GetType().BaseType == typeof(TestDecorator2));
+                Assert.NotNull(service.DecoratedService.DecoratedService.GetType().BaseType == typeof(TestDecorator1));
             }
 
-            Assert.NotNull(services[0].DecoratedService.DecoratedService.DecoratedService as TestDecoratorImpl1);
-            Assert.NotNull(services[1].DecoratedService.DecoratedService.DecoratedService as TestDecoratorImpl2);
-            Assert.NotNull(services[2].DecoratedService.DecoratedService.DecoratedService as TestDecoratorImpl3);
+            Assert.NotNull(services[0].DecoratedService.DecoratedService.DecoratedService.GetType().BaseType == typeof(TestDecoratorImpl1));
+            Assert.NotNull(services[1].DecoratedService.DecoratedService.DecoratedService.GetType().BaseType == typeof(TestDecoratorImpl2));
+            Assert.NotNull(services[2].DecoratedService.DecoratedService.DecoratedService.GetType().BaseType == typeof(TestDecoratorImpl3));
         }
 
         [Fact]

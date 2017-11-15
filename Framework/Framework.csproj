@@ -38,7 +38,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Autofac, Version=4.6.2.0, Culture=neutral, PublicKeyToken=17863af14b0044da">
+    <Reference Include="Autofac, Version=4.6.2.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Autofac.4.6.2\lib\net45\Autofac.dll</HintPath>
     </Reference>
     <Reference Include="Autofac.Configuration, Version=4.0.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da">
@@ -259,6 +260,7 @@
     <Compile Include="Environment\IShellContainerRegistrations.cs" />
     <Compile Include="Environment\ISystemHost.cs" />
     <Compile Include="Environment\ISystemShell.cs" />
+    <Compile Include="Environment\IWorkContextEvents.cs" />
     <Compile Include="Environment\SystemHostContainerRegistry.cs" />
     <Compile Include="Environment\RunningShellTable.cs" />
     <Compile Include="Environment\ShellBuilder\CompositionStrategy.cs" />
@@ -275,6 +277,9 @@
     <Compile Include="Environment\State\IProcessingEngine.cs" />
     <Compile Include="Environment\SystemFrameworkAssemblyNameResolver.cs" />
     <Compile Include="Environment\SystemStarter.cs" />
+    <Compile Include="Environment\WorkContextAccessor.cs" />
+    <Compile Include="Environment\WorkContextImplementation.cs" />
+    <Compile Include="Environment\WorkContextModule.cs" />
     <Compile Include="Events\DefaultOrchardEventBus.cs" />
     <Compile Include="Events\DelegateHelper.cs" />
     <Compile Include="Events\EventsInterceptor.cs" />
@@ -313,6 +318,7 @@
     <Compile Include="FileSystems\WebSite\IWebSiteFolder.cs" />
     <Compile Include="FileSystems\WebSite\WebSiteFolder.cs" />
     <Compile Include="IDependency.cs" />
+    <Compile Include="InvokeExtensions.cs" />
     <Compile Include="IWorkContextAccessor.cs" />
     <Compile Include="Localization\IText.cs" />
     <Compile Include="Localization\LocalizationUtilities.cs" />

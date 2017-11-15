@@ -89,8 +89,9 @@ namespace Framework.Tests.Environment.AutofacUtil.DynamicProxy2
             var context = new DynamicProxyContext();
 
             var builder1 = new ContainerBuilder();
-            builder1.RegisterType<SimpleComponent>().EnableDynamicProxy(context);
             builder1.RegisterModule(new SimpleInterceptorModule());
+            builder1.RegisterType<SimpleComponent>().EnableDynamicProxy(context);
+  
             var container1 = builder1.Build();
 
             var simple1 = container1.Resolve<SimpleComponent>();
@@ -114,7 +115,7 @@ namespace Framework.Tests.Environment.AutofacUtil.DynamicProxy2
 
     public class SimpleInterceptorModule : Module {
         protected override void Load(ContainerBuilder builder) {
-            builder.RegisterType<SimpleInterceptor>();
+            builder.RegisterType<SimpleInterceptor>() ;
 
             base.Load(builder);
         }
