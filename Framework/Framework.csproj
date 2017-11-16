@@ -178,6 +178,7 @@
     <Compile Include="Caching\IVolatileProvider.cs" />
     <Compile Include="Caching\IVolatileToken.cs" />
     <Compile Include="Caching\Weak.cs" />
+    <Compile Include="ContentManagement\IContent.cs" />
     <Compile Include="ContentManagement\Records\ContentItemRecord.cs" />
     <Compile Include="ContentManagement\Records\ContentItemVersionRecord.cs" />
     <Compile Include="ContentManagement\Records\ContentTypeRecord.cs" />
@@ -383,7 +384,12 @@
     <Compile Include="Owin\OrchardMiddleware.cs" />
     <Compile Include="Owin\OwinMiddlewareRegistration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\IAuthorizationService.cs" />
+    <Compile Include="Security\IAuthorizer.cs" />
     <Compile Include="Security\IUser.cs" />
+    <Compile Include="Security\Permissions\IPermissionProvider.cs" />
+    <Compile Include="Security\Permissions\Permission.cs" />
+    <Compile Include="Security\StandardPermissions.cs" />
     <Compile Include="Security\SystemSecurityException.cs" />
     <Compile Include="Services\Clock.cs" />
     <Compile Include="Services\IClock.cs" />
@@ -396,6 +402,7 @@
     <Compile Include="Tasks\ISweepGenerator.cs" />
     <Compile Include="Tasks\SweepGenerator.cs" />
     <Compile Include="UI\FlatPositionComparer.cs" />
+    <Compile Include="UI\Notify\NotifierExtensions.cs" />
     <Compile Include="UI\Notify\Notify.cs" />
     <Compile Include="UI\Notify\NotifyEntry.cs" />
     <Compile Include="UI\Resources\IResourceFileHashProvider.cs" />

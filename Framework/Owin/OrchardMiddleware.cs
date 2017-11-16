@@ -8,7 +8,7 @@ namespace Framework.Owin
     /// A special Owin middleware that is executed last in the Owin pipeline and runs the non-Owin part of the request.
     /// </summary>
     public static class OrchardMiddleware {
-        public static IAppBuilder UseOrchard(this IAppBuilder app) {
+        public static IAppBuilder UseSystem(this IAppBuilder app) {
             app.Use(async (context, next) => {
                 var handler = context.Environment["orchard.Handler"] as Func<Task>;
 

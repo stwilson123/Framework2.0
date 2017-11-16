@@ -20,6 +20,7 @@ using Framework.Environment.Extensions.Loaders;
 using Framework.Environment.ShellBuilder;
 using Framework.Environment.State;
 using Framework.Events;
+using Framework.Exceptions;
 using Framework.FileSystems.AppData;
 using Framework.FileSystems.Dependencies;
 using Framework.FileSystems.LockFile;

@@ -20,7 +20,7 @@ namespace Framework.Logging
 
         protected override void Load(ContainerBuilder moduleBuilder)
         {
-            // by default, use Orchard's logger that delegates to Castle's logger factory
+            // by default, use System's logger that delegates to Castle's logger factory
 //            moduleBuilder.RegisterType<CastleLoggerFactory>().As<ILoggerFactory>().InstancePerLifetimeScope();
 //            moduleBuilder.RegisterType<OrchardLog4netFactory>().As<Castle.Core.Logging.ILoggerFactory>().InstancePerLifetimeScope();
 

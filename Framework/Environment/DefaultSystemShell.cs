@@ -65,7 +65,7 @@ namespace Framework.Environment
                 }
 
                 // Register the Orchard middleware after all others.
-                appBuilder.UseOrchard();
+                appBuilder.UseSystem();
 
                 var pipeline = appBuilder.Build();
                 var allRoutes = new List<RouteDescriptor>();

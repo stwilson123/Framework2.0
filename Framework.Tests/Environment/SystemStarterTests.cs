@@ -28,8 +28,11 @@ namespace Framework.Tests.Environment
             });
             var services = container.Resolve<IEnumerable<IServiceA>>();
             Assert.Equal(services.Count(), 2);
-            Assert.True(services.First().GetType() ==  typeof(Component1));
-            Assert.True(services.Last().GetType() == typeof(Component2));
+//            Assert.True(services.First().GetType() ==  typeof(Component1));
+//            Assert.True(services.Last().GetType() == typeof(Component2));
+            //FIFO OR FILO ?
+            Assert.True(services.Last().GetType() ==  typeof(Component1));
+            Assert.True(services.First().GetType() == typeof(Component2));
         }
 
         [Fact]

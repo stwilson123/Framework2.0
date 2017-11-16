@@ -78,7 +78,7 @@ namespace Framework.FileSystems.WebSite
         public void CopyFileTo(string virtualPath, Stream destination, bool actualContent) {
             if (actualContent) {
                 // This is an unfortunate side-effect of the dynamic compilation work.
-                // Orchard has a custom virtual path provider which adds "<@Assembly xxx@>"
+                // System has a custom virtual path provider which adds "<@Assembly xxx@>"
                 // directives to WebForm view files. There are cases when this side effect
                 // is not expected by the consumer of the WebSiteFolder API.
                 // The workaround here is to go directly to the file system.

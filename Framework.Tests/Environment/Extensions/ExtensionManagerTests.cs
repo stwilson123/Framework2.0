@@ -222,7 +222,7 @@ Version: 1.0.3
 SystemVersion: 1
 Features:
     SuperWiki: 
-        Description: My super wiki module for Orchard.
+        Description: My super wiki module for System.
 ");
 
             var descriptor = _manager.AvailableExtensions().Single();
@@ -232,7 +232,7 @@ Features:
             Assert.Equal(descriptor.Features.Count(), 1);
             Assert.Equal(descriptor.Features.First().Id, "SuperWiki");
             Assert.Equal(descriptor.Features.First().Extension.Id, "SuperWiki");
-            Assert.Equal(descriptor.Features.First().Description, "My super wiki module for Orchard.");
+            Assert.Equal(descriptor.Features.First().Description, "My super wiki module for System.");
         }
 
         [Fact]

@@ -13,7 +13,7 @@ namespace Framework.Environment
                     registered.ComponentRegistration.Activated += (sender2, activated) => {
                         // Autofac's IEnumerable feature returns an Array
                         if (activated.Instance is Array) {
-                            // Orchard needs FIFO, not FILO, component order
+                            // System needs FIFO, not FILO, component order
                             Array.Reverse((Array)activated.Instance);
                         }
                     };

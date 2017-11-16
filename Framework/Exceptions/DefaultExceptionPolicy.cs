@@ -8,6 +8,7 @@ using Framework.Exceptions.Exception;
 using Framework.Localization;
 using Framework.Logging;
 using Framework.Security;
+using Framework.UI.Notify;
 using SystemException = Framework.Exceptions.Exception.SystemException;
 
 namespace Framework.Exceptions
