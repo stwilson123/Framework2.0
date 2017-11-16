@@ -44,8 +44,11 @@ namespace Framework.Environment
         public static IContainer CreateHostContainer(Action<ContainerBuilder> registrations)
         {
             ExtensionLocations extensionLocations = new ExtensionLocations();
-            
+         
+
             var builder = new ContainerBuilder();
+            // Application paths and parameters
+            builder.RegisterInstance(extensionLocations);
             builder.RegisterModule(new CollectionOrderModule());
             builder.RegisterModule(new LoggingModule());
             builder.RegisterModule(new EventsModule());
@@ -56,7 +59,7 @@ namespace Framework.Environment
             builder.RegisterType<DefaultCacheHolder>().As<ICacheHolder>().SingleInstance();
             builder.RegisterType<DefaultCacheContextAccessor>().As<ICacheContextAccessor>().SingleInstance();
             builder.RegisterType<DefaultParallelCacheContext>().As<IParallelCacheContext>().SingleInstance();
-           // builder.RegisterType<DefaultAsyncTokenProvider>().As<IAsyncTokenProvider>().SingleInstance();
+            builder.RegisterType<DefaultAsyncTokenProvider>().As<IAsyncTokenProvider>().SingleInstance();
             builder.RegisterType<DefaultHostEnvironment>().As<IHostEnvironment>().SingleInstance();    
             builder.RegisterType<DefaultHostLocalRestart>().As<IHostLocalRestart>().Named<IEventHandler>(typeof(IShellSettingsManagerEventHandler).Name).SingleInstance();
             builder.RegisterType<DefaultBuildManager>().As<IBuildManager>().SingleInstance();
@@ -71,7 +74,7 @@ namespace Framework.Environment
             builder.RegisterType<SystemFrameworkAssemblyNameResolver>().As<IAssemblyNameResolver>().SingleInstance();
             builder.RegisterType<HttpContextAccessor>().As<IHttpContextAccessor>().InstancePerDependency();
            // builder.RegisterType<ViewsBackgroundCompilation>().As<IViewsBackgroundCompilation>().SingleInstance();
-            //builder.RegisterType<DefaultExceptionPolicy>().As<IExceptionPolicy>().SingleInstance();
+            builder.RegisterType<DefaultExceptionPolicy>().As<IExceptionPolicy>().SingleInstance();
             builder.RegisterType<DefaultCriticalErrorProvider>().As<ICriticalErrorProvider>().SingleInstance();
             builder.RegisterType<ResourceFileHashProvider>().As<IResourceFileHashProvider>().SingleInstance();
             //builder.RegisterType<RazorTemplateCache>().As<IRazorTemplateProvider>().SingleInstance();
@@ -81,6 +84,8 @@ namespace Framework.Environment
             RegisterVolatileProvider<DefaultLockFileManager, ILockFileManager>(builder);
             RegisterVolatileProvider<Clock, IClock>(builder);
             RegisterVolatileProvider<DefaultDependenciesFolder, IDependenciesFolder>(builder);
+            RegisterVolatileProvider<DefaultExtensionDependenciesManager, IExtensionDependenciesManager>(builder);
+
             RegisterVolatileProvider<DefaultAssemblyProbingFolder, IAssemblyProbingFolder>(builder);
             RegisterVolatileProvider<DefaultVirtualPathMonitor, IVirtualPathMonitor>(builder);
             RegisterVolatileProvider<DefaultVirtualPathProvider, IVirtualPathProvider>(builder);

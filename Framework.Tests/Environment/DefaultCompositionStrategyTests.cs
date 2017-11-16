@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using Autofac;
 using Autofac.Core;
+using Framework.ContentManagement.Records;
 using Framework.Environment.Configuration;
 using Framework.Environment.Extensions;
 using Framework.Environment.Extensions.Attributes;
@@ -251,23 +252,23 @@ namespace Framework.Tests.Environment
 
         [Fact]
         public void CoreRecordsAreAddedAutomatically() {
-            var descriptor = Build.ShellDescriptor().WithFeatures("Orchard.Framework");
+            var descriptor = Build.ShellDescriptor().WithFeatures("System.Framework");
 
             var compositionStrategy = _container.Resolve<ICompositionStrategy>();
             var blueprint = compositionStrategy.Compose(BuildDefaultSettings(), descriptor);
 
-//            var ct = blueprint.Records.Single(x => x.Type == typeof(ContentTypeRecord));
-//            var ci = blueprint.Records.Single(x => x.Type == typeof(ContentItemRecord));
-//            var civ = blueprint.Records.Single(x => x.Type == typeof(ContentItemVersionRecord));
-//
-//            Assert.Equal(ct.Feature.Descriptor.Id, "Orchard.Framework");
-//            Assert.Equal(ct.TableName, "Orchard_Framework_ContentTypeRecord");
-//
-//            Assert.Equal(ci.Feature.Descriptor.Id, "Orchard.Framework");
-//            Assert.Equal(ci.TableName, "Orchard_Framework_ContentItemRecord");
-//
-//            Assert.Equal(civ.Feature.Descriptor.Id, "Orchard.Framework");
-//            Assert.Equal(civ.TableName, "Orchard_Framework_ContentItemVersionRecord");
+            var ct = blueprint.Records.Single(x => x.Type == typeof(ContentTypeRecord));
+            var ci = blueprint.Records.Single(x => x.Type == typeof(ContentItemRecord));
+            var civ = blueprint.Records.Single(x => x.Type == typeof(ContentItemVersionRecord));
+
+            Assert.Equal(ct.Feature.Descriptor.Id, "System.Framework");
+            Assert.Equal(ct.TableName, "System_Framework_ContentTypeRecord");
+
+            Assert.Equal(ci.Feature.Descriptor.Id, "System.Framework");
+            Assert.Equal(ci.TableName, "System_Framework_ContentItemRecord");
+
+            Assert.Equal(civ.Feature.Descriptor.Id, "System.Framework");
+            Assert.Equal(civ.TableName, "System_Framework_ContentItemVersionRecord");
         }
 
         [Fact]
@@ -317,13 +318,13 @@ namespace Framework.Tests.Environment
             Assert.NotNull(blueprint.Dependencies.FirstOrDefault(dependency => dependency.Type.Equals(typeof(StubNestedType))));
         }
 
-        [SystemSuppressDependency("ystem.Tests.Environment.DefaultCompositionStrategyTests+ReplacedStubNestedType")]
+        [SystemSuppressDependency("Framework.Tests.Environment.DefaultCompositionStrategyTests+ReplacedStubNestedType")]
         internal class StubNestedType : IDependency {}
 
         internal class ReplacedStubNestedType : IDependency {}
     }
 
-    [SystemSuppressDependency("ystem.Tests.Environment.ReplacedStubType")]
+    [SystemSuppressDependency("Framework.Tests.Environment.ReplacedStubType")]
     internal class StubType : IDependency { }
 
     internal class ReplacedStubType : IDependency { }
