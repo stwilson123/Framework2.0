@@ -111,6 +111,7 @@
     <Compile Include="Environment\Extensions\ExtensionManagerTests.cs" />
     <Compile Include="Environment\Extensions\ExtensionTypes\ExtensionTypes.cs" />
     <Compile Include="Environment\Loaders\DynamicExtensionLoaderTests.cs" />
+    <Compile Include="Environment\RunningShellTableTests.cs" />
     <Compile Include="Environment\ShellBuilders\CompositionStrategyTests.cs" />
     <Compile Include="Environment\ShellBuilders\DefaultShellContainerFactoryTests.cs" />
     <Compile Include="Environment\ShellBuilders\DefaultShellContextFactoryTests.cs" />
@@ -122,6 +123,7 @@
     <Compile Include="Environment\TestDependencies\TestDependency.cs" />
     <Compile Include="Environment\Utility\Build.cs" />
     <Compile Include="Environment\Warmup\WarmupUtilityTests.cs" />
+    <Compile Include="Event\EventTests.cs" />
     <Compile Include="FileSystems\AppData\AppDataFolderTests.cs" />
     <Compile Include="FileSystems\Dependencies\AssemblyProbingFolderTests.cs" />
     <Compile Include="FileSystems\Dependencies\DependenciesFolderTests.cs" />

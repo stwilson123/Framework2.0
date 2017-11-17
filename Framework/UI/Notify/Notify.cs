@@ -45,4 +45,4 @@ namespace Framework.UI.Notify
             return _entries;
         }
     }
-}
+}                                                                                                
