@@ -45,6 +45,17 @@ namespace Framework.Tests.Event
             Assert.Equal(_eventHandler.Count, 1);
         }
 
+       [Fact]
+       public void EventParametersAreCorrectlyPassedToDouebleEventHandlers() {
+           Assert.Equal(_eventHandler.Result, 0);
+           Dictionary<string, object> arguments = new Dictionary<string, object>();
+           arguments["a"] = 5200;
+           arguments["b"] = 2600;
+           _eventBus.Notify("ITestEventHandler.Sum", arguments);
+           Assert.Equal(_eventHandler.Result, 15600);
+       }
+
+       
         [Fact]
         public void EventParametersAreCorrectlyPassedToEventHandlers() {
             Assert.Equal(_eventHandler.Result, 0);
@@ -195,6 +206,8 @@ namespace Framework.Tests.Event
             void Increment();
             void Sum(int a);
             void Sum(int a, int b);
+            void Sum(string a, string b);
+
             void Sum(int a, int b, int c);
             void Substract(int a, int b);
             void Concat(string a, string b, string c);
@@ -218,6 +231,11 @@ namespace Framework.Tests.Event
 
             public void Sum(int a, int b) {
                 Result = 2 * (a + b);
+            }
+
+            public void Sum(string a, string b)
+            {
+                Summary = a + b;
             }
 
             public void Sum(int a, int b, int c) {
@@ -252,6 +270,11 @@ namespace Framework.Tests.Event
             }
 
             public void Sum(int a, int b) {
+            }
+
+            public void Sum(string a, string b)
+            {
+                 
             }
 
             public void Sum(int a, int b, int c) {
