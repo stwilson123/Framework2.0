@@ -69,7 +69,7 @@ namespace Framework.Events
         }
 
         private static bool TryInvokeMethod(IEventHandler eventHandler, Type interfaceType, string messageName, string interfaceName, string methodName, IDictionary<string, object> arguments, out IEnumerable returnValue) {
-            var key = eventHandler.GetType().FullName + "_" + messageName + "_" + String.Join("_", arguments.Values.Select(t => t.GetType()));
+            var key = eventHandler.GetType().FullName + "_" + messageName + "_" + String.Join("_", arguments.Values.Select(t => t.GetType())) + String.Join("_", arguments.Keys);
             var cachedDelegate = _delegateCache.GetOrAdd(key, k => {
                 var method = GetMatchingMethod(eventHandler, interfaceType, methodName, arguments);
                 return method != null

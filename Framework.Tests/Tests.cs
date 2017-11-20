@@ -13,7 +13,7 @@ namespace Framework.Tests
         
     }
 
-    public class Data : Idata
+    public class Data1 : Idata
     {
         public string a;
     }
@@ -45,7 +45,7 @@ namespace Framework.Tests
         [Fact]
         public void Test2()
         {
-           var str=  JsonConvert.SerializeObject(new Data() {a = "123"});
+           var str=  JsonConvert.SerializeObject(new Data1() {a = "123"});
         }
         
         /// <summary>

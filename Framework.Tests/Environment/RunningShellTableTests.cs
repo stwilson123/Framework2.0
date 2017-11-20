@@ -12,7 +12,7 @@ namespace Framework.Tests.Environment
         {
           
             
-            Assert.True(ShellComparer.ShellEquals(match,source));
+            Assert.Equal<ShellSettings>(match,source,new ShellComparer());
         }
         [Fact]
         public void NoShellsGiveNoMatch() {

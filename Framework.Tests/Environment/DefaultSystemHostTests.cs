@@ -24,7 +24,8 @@ using Framework.Tests.Environment.ShellBuilders;
 using Framework.Tests.Environment.TestDependencies;
 using Framework.Tests.Stub;
 using Framework.Tests.Utility.Container;
-using Xunit; 
+using Xunit;
+using IModelBinderProvider = Framework.Mvc.ModelBinders.IModelBinderProvider;
 
 namespace Framework.Tests.Environment
 {
@@ -63,7 +64,7 @@ namespace Framework.Tests.Environment
                         .Ignore<IExtensionFolders>()
                         .Ignore<IRouteProvider>()
                         .Ignore<IHttpRouteProvider>()
-                        .Ignore<Mvc.ModelBinders.IModelBinderProvider>()
+                        .Ignore<IModelBinderProvider>()
                         .Ignore<IWorkContextEvents>()
                         .Ignore<IOwinMiddlewareProvider>();
                 });
