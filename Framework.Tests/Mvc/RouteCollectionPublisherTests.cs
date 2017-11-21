@@ -51,9 +51,13 @@ namespace Framework.Tests.Mvc
             _routes.MapRoute("foo", "{controller}");
 
             var publisher = _container.Resolve<IRoutePublisher>();
-            publisher.Publish(new[] { Desc("yarg", "bar"), Desc("yarg", "quux") });
 
-            Assert.Throws<ArgumentException>(() => _routes.Count() == (2));
+
+            Assert.Throws<ArgumentException>(() =>
+            {
+                publisher.Publish(new[] {Desc("yarg", "bar"), Desc("yarg", "quux")});
+                return _routes.Count() == 2;
+            });
         }
 
 
@@ -91,9 +95,9 @@ namespace Framework.Tests.Mvc
             Thread.Sleep(75);
             Assert.Equal(where, ("before"));
             readLock.Dispose();
-            Thread.Sleep(75);
-            Assert.Equal(where, ("after"));
             action.EndInvoke(asyncResult);
+            Assert.Equal(where, ("after"));
+          
         }
 
         [Fact]
