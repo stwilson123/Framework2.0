@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AE4BADB2-CB82-47AF-8EB8-940C3907C2C2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DBEntityGenerate</RootNamespace>
+    <AssemblyName>DBEntityGenerate</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\LIb\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="envdte, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Oracle.ManagedDataAccess, Version=4.122.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342">
+      <HintPath>..\packages\Oracle.ManagedDataAccess.12.2.1100\lib\net40\Oracle.ManagedDataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseTypeMethodExpend\Array.cs" />
+    <Compile Include="BaseTypeMethodExpend\Char.cs" />
+    <Compile Include="BaseTypeMethodExpend\CheckValue.cs" />
+    <Compile Include="BaseTypeMethodExpend\Clone.cs" />
+    <Compile Include="BaseTypeMethodExpend\Convert.cs" />
+    <Compile Include="BaseTypeMethodExpend\Localization.cs" />
+    <Compile Include="BaseTypeMethodExpend\Number.cs" />
+    <Compile Include="BaseTypeMethodExpend\Text.cs" />
+    <Compile Include="DBConnect\dbConnectName.cs" />
+    <Compile Include="Linq\DeleteBuilder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Linq\ExpressionVisitor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Linq\GetBuilder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Linq\IPropertyChanged.cs" />
+    <Compile Include="Linq\SelectBuilder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Linq\SetBuilder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Linq\SqlOperator\FunctionOperatorType.cs" />
+    <Compile Include="Linq\UpdateBuilder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Linq\JoinBuilder.cs" />
+    <Compile Include="Linq\WhereBuilder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\TrackingEntity.cs" />
+    <Compile Include="PetaPoco\DBProvider\FirebirdDbDatabaseProvider.cs" />
+    <Compile Include="PetaPoco\DBProvider\DatabaseProvider.cs" />
+    <Compile Include="PetaPoco\DBProvider\MariaDbDatabaseProvider.cs" />
+    <Compile Include="PetaPoco\DBProvider\MsAccessDbDatabaseProvider.cs" />
+    <Compile Include="PetaPoco\DBProvider\MySqlDatabaseProvider.cs" />
+    <Compile Include="PetaPoco\DBProvider\OracleDatabaseProvider.cs" />
+    <Compile Include="PetaPoco\DBProvider\PostgreSQLDatabaseProvider.cs" />
+    <Compile Include="PetaPoco\DBProvider\SQLiteDatabaseProvider.cs" />
+    <Compile Include="PetaPoco\DBProvider\SqlServerCEDatabaseProviders.cs" />
+    <Compile Include="PetaPoco\DBProvider\SqlServerDatabaseProvider.cs" />
+    <Compile Include="PetaPoco\Extend\ModelMapper.cs" />
+    <Compile Include="PetaPoco\Extend\PetaPocoDBExMehtod.cs" />
+    <Compile Include="PetaPoco\Interface\IQuery.cs" />
+    <Compile Include="PetaPoco\Model\Page.cs" />
+    <Compile Include="PetaPoco\PetaPoco.cs" />
+    <Compile Include="PagedList.cs" />
+    <Compile Include="PetaPoco\PetaPocoDataBaseExpend\DataBase.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Linq\SqlOperator\QueryOperatorType.cs" />
+    <Compile Include="Reflect\Accessor.cs" />
+    <Compile Include="Reflect\Dict.cs" />
+    <Compile Include="Reflect\FastReflection.cs" />
+    <Compile Include="Untils.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="Models\Generated\PetaPoco.Core.ttinclude" />
+    <None Include="Models\Generated\PetaPoco.Generator.ttinclude" />
+    <None Include="packages.config" />
+    <None Include="PetaPoco\T4\PetaPoco.Core.ttinclude" />
+    <None Include="PetaPoco\T4\PetaPoco.Generator.ttinclude" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
