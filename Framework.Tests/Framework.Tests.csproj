@@ -136,6 +136,7 @@
     <Compile Include="Logging\LoggingModuleTests.cs" />
     <Compile Include="Mvc\RouteCollectionPublisherTests.cs" />
     <Compile Include="Mvc\Routes\ShellRouteTests.cs" />
+    <Compile Include="Mvc\Routes\UrlPrefixTests.cs" />
     <Compile Include="Mvc\SystemControllerFactoryTests.cs" />
     <Compile Include="Records\BarRecord.cs" />
     <Compile Include="Records\FooRecord.cs" />
