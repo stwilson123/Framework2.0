@@ -100,6 +100,8 @@
     <Compile Include="ContainerTestBase.cs" />
     <Compile Include="DatabaseEnabledTestsBase.cs" />
     <Compile Include="Data\Bags\BagsTests.cs" />
+    <Compile Include="Data\Builder\SessionFactoryBuilderTests.cs" />
+    <Compile Include="Data\ProviderUtilities.cs" />
     <Compile Include="Environment\AutofacUtil\AutofacTests.cs" />
     <Compile Include="Environment\AutofacUtil\DynamicProxy2\DynamicProxyTests.cs" />
     <Compile Include="Environment\Blueprint\DefaultShellDescriptorCacheTests.cs" />
@@ -136,6 +138,7 @@
     <Compile Include="Logging\LoggingModuleTests.cs" />
     <Compile Include="Mvc\RouteCollectionPublisherTests.cs" />
     <Compile Include="Mvc\Routes\ShellRouteTests.cs" />
+    <Compile Include="Mvc\Routes\StandardExtensionRouteProviderTests.cs" />
     <Compile Include="Mvc\SystemControllerFactoryTests.cs" />
     <Compile Include="Records\BarRecord.cs" />
     <Compile Include="Records\FooRecord.cs" />
@@ -165,6 +168,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Framework.Data\Framework.Data.csproj">
+      <Project>{d03231a9-b474-48f2-9799-1429564e026e}</Project>
+      <Name>Framework.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Framework\Framework.csproj">
       <Project>{050d2ccc-8150-4e9d-b7ab-33ed8ae86c46}</Project>
       <Name>Framework</Name>

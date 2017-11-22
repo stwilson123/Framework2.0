@@ -190,10 +190,22 @@
     <Compile Include="Data\Bags\Serialization\IBagSerializer.cs" />
     <Compile Include="Data\Bags\Serialization\XmlSettingsSerializer.cs" />
     <Compile Include="Data\Bags\SValue.cs" />
+    <Compile Include="Data\Cfg\Configuration.cs" />
+    <Compile Include="Data\Cfg\ConnectionStringBuilder.cs" />
+    <Compile Include="Data\Cfg\IPersistenceConfigurer.cs" />
+    <Compile Include="Data\Cfg\PersistenceConfiguration.cs" />
     <Compile Include="Data\Conventions\StringLengthMaxAttribute.cs" />
+    <Compile Include="Data\Interceptor\IDbInterceptor.cs" />
+    <Compile Include="Data\ISession.cs" />
     <Compile Include="Data\ISessionConfigurationEvents.cs" />
+    <Compile Include="Data\ISessionFactory.cs" />
     <Compile Include="Data\ITransactionManager.cs" />
     <Compile Include="Data\ISessionConfigurationCache.cs" />
+    <Compile Include="Data\Providers\DataServiceParameters.cs" />
+    <Compile Include="Data\Providers\DataServicesProviderFactory.cs" />
+    <Compile Include="Data\Providers\IDataServicesProvider.cs" />
+    <Compile Include="Data\Providers\IDataServicesProviderFactory.cs" />
+    <Compile Include="Data\Providers\SessionFactoryParameters.cs" />
     <Compile Include="Data\SessionConfigurationCache.cs" />
     <Compile Include="Environment\AppDomainAssemblyNameResolver.cs" />
     <Compile Include="Environment\Assemblys\AppDomainAssemblyNameResolver.cs" />
@@ -370,6 +382,7 @@
     <Compile Include="Mvc\MvcModule.cs" />
     <Compile Include="Mvc\Routes\HubRoute.cs" />
     <Compile Include="Mvc\Routes\RoutePublisher.cs" />
+    <Compile Include="Mvc\Routes\StandardExtensionRouteProvider.cs" />
     <Compile Include="Mvc\SystemControllerFactory.cs" />
     <Compile Include="Mvc\Routes\HttpRouteDescriptor.cs" />
     <Compile Include="Mvc\Routes\IHttpRouteProvider.cs" />
@@ -453,6 +466,12 @@
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\packages\xunit.analyzers.0.7.0\analyzers\dotnet\cs\xunit.analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DBORM\DBORM.csproj">
+      <Project>{AE4BADB2-CB82-47AF-8EB8-940C3907C2C2}</Project>
+      <Name>DBORM</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

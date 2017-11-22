@@ -1,9 +1,11 @@
-﻿namespace Framework.Data
+﻿using Framework.Utility;
+
+namespace Framework.Data
 {
-//     /// <summary>
-//    /// Allows hooking into NHibernate session configuration pipeline.
-//    /// </summary>
-//    public interface ISessionConfigurationEvents : ISingletonDependency {
+     /// <summary>
+    /// Allows hooking into NHibernate session configuration pipeline.
+    /// </summary>
+    public interface ISessionConfigurationEvents : ISingletonDependency {
 //        /// <summary>
 //        /// Called when an empty fluent configuration object has been created, 
 //        /// before applying any default Orchard config settings (alterations, conventions etc.).
@@ -30,17 +32,17 @@
 //        /// </summary>
 //        /// <param name="cfg">Final, raw NH configuration object.</param>
 //        void Finished(Configuration cfg);
-//
-//        /// <summary>
-//        /// Called when configuration hash is being computed. If hash changes, configuration will be rebuilt and stored in mappings.bin.
-//        /// This method allows to alter the default hash to take into account custom configuration changes.
-//        /// </summary>
-//        /// <remarks>
-//        /// It's a developer responsibility to make sure hash is correctly updated when config needs to be rebuilt.
-//        /// Otherwise the cached configuration (mappings.bin file) will be used as long as default Orchard configuration 
-//        /// is unchanged or until the file is manually removed.
-//        /// </remarks>
-//        /// <param name="hash">Current hash object</param>
-//        void ComputingHash(Hash hash);
-//    }
+
+        /// <summary>
+        /// Called when configuration hash is being computed. If hash changes, configuration will be rebuilt and stored in mappings.bin.
+        /// This method allows to alter the default hash to take into account custom configuration changes.
+        /// </summary>
+        /// <remarks>
+        /// It's a developer responsibility to make sure hash is correctly updated when config needs to be rebuilt.
+        /// Otherwise the cached configuration (mappings.bin file) will be used as long as default Orchard configuration 
+        /// is unchanged or until the file is manually removed.
+        /// </remarks>
+        /// <param name="hash">Current hash object</param>
+        void ComputingHash(Hash hash);
+    }
 }
