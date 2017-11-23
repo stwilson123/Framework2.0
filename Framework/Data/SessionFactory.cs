@@ -1,35 +1,45 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using Autofac.Features.Metadata;
 using Framework.Data.Cfg;
 using Framework.Data.Interceptor;
+using Framework.Data.Providers;
 
 namespace Framework.Data
 {
+   public  delegate ISession CreateDbSession(string connectionString);
     public class SessionFactory : ISessionFactory    
     {
-        private  Configuration _configuration;
+        private readonly IEnumerable<Meta<CreateDbSession>> _sessions;
+        private readonly Configuration _configuartion;
 
-        public SessionFactory(Configuration configuration)
+
+        public SessionFactory(IEnumerable<Meta<CreateDbSession>> sessions,Configuration  configuartion)
         {
-            _configuration = configuration;
+            _sessions = sessions;
+            _configuartion = configuartion;
         }
+ 
 
         public void Dispose()
         {
             throw new NotImplementedException();
         }
 
-       
-
-        public ISession OpenSession(IDbConnection conn)
-        {
-            throw new NotImplementedException();
-        }
 
         public ISession OpenSession()
         {
-            throw new NotImplementedException();
+            foreach (var sessionMeta in _sessions) {
+                object name;
+                if (!sessionMeta.Metadata.TryGetValue("ProviderName", out name)) {
+                    continue;
+                }
+                if (string.Equals(Convert.ToString(name), _configuartion.ProviderName, StringComparison.OrdinalIgnoreCase)) {
+                    return sessionMeta.Value(_configuartion.ConnectString);
+                }
+            }
+            return null;
         }
 
         public void Close()

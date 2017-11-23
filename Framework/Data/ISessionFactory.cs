@@ -9,39 +9,39 @@ namespace Framework.Data
     public interface ISessionFactory : IDisposable
     {
       
-         /// <summary>
-    /// Open a <c>ISession</c> on the given connection
-    /// </summary>
-    /// <param name="conn">A connection provided by the application</param>
-    /// <returns>A session</returns>
-    /// <remarks>
-    /// Note that the second-level cache will be disabled if you
-    /// supply a ADO.NET connection. NHibernate will not be able to track
-    /// any statements you might have executed in the same transaction.
-    /// Consider implementing your own <see cref="T:NHibernate.Connection.IConnectionProvider" />.
-    /// </remarks>
-    ISession OpenSession(IDbConnection conn);
-
-    /// <summary>
-    /// Create database connection and open a <c>ISession</c> on it, specifying an interceptor
-    /// </summary>
-    /// <param name="sessionLocalInterceptor">A session-scoped interceptor</param>
-    /// <returns>A session</returns>
-    ISession OpenSession(IDbInterceptor sessionLocalInterceptor);
-
-    /// <summary>
-    /// Open a <c>ISession</c> on the given connection, specifying an interceptor
-    /// </summary>
-    /// <param name="conn">A connection provided by the application</param>
-    /// <param name="sessionLocalInterceptor">A session-scoped interceptor</param>
-    /// <returns>A session</returns>
-    /// <remarks>
-    /// Note that the second-level cache will be disabled if you
-    /// supply a ADO.NET connection. NHibernate will not be able to track
-    /// any statements you might have executed in the same transaction.
-    /// Consider implementing your own <see cref="T:NHibernate.Connection.IConnectionProvider" />.
-    /// </remarks>
-    ISession OpenSession(IDbConnection conn, IDbInterceptor sessionLocalInterceptor);
+//         /// <summary>
+//    /// Open a <c>ISession</c> on the given connection
+//    /// </summary>
+//    /// <param name="conn">A connection provided by the application</param>
+//    /// <returns>A session</returns>
+//    /// <remarks>
+//    /// Note that the second-level cache will be disabled if you
+//    /// supply a ADO.NET connection. NHibernate will not be able to track
+//    /// any statements you might have executed in the same transaction.
+//    /// Consider implementing your own <see cref="T:NHibernate.Connection.IConnectionProvider" />.
+//    /// </remarks>
+//    ISession OpenSession(IDbConnection conn);
+//
+//    /// <summary>
+//    /// Create database connection and open a <c>ISession</c> on it, specifying an interceptor
+//    /// </summary>
+//    /// <param name="sessionLocalInterceptor">A session-scoped interceptor</param>
+//    /// <returns>A session</returns>
+//    ISession OpenSession(IDbInterceptor sessionLocalInterceptor);
+//
+//    /// <summary>
+//    /// Open a <c>ISession</c> on the given connection, specifying an interceptor
+//    /// </summary>
+//    /// <param name="conn">A connection provided by the application</param>
+//    /// <param name="sessionLocalInterceptor">A session-scoped interceptor</param>
+//    /// <returns>A session</returns>
+//    /// <remarks>
+//    /// Note that the second-level cache will be disabled if you
+//    /// supply a ADO.NET connection. NHibernate will not be able to track
+//    /// any statements you might have executed in the same transaction.
+//    /// Consider implementing your own <see cref="T:NHibernate.Connection.IConnectionProvider" />.
+//    /// </remarks>
+//    ISession OpenSession(IDbConnection conn, IDbInterceptor sessionLocalInterceptor);
 
     /// <summary>
     /// Create a database connection and open a <c>ISession</c> on it

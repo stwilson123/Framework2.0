@@ -10,12 +10,17 @@ namespace Framework.Data.Cfg
     {
         public const string DefaultCfgFileName = "database.cfg.xml";
 
-        private  ConnectionStringSettings _connectStringSetting;
-        
-        public Configuration(ConnectionStringSettings connectStringSetting)
+
+        public string ConnectString { get; }
+        public string ProviderName { get; }
+
+        public Configuration(string connectString,string providerName)
         {
-            _connectStringSetting = connectStringSetting;
+            ConnectString = connectString;
+            ProviderName = providerName;
         }
+        
+
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             throw new NotImplementedException();

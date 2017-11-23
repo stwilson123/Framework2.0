@@ -23,7 +23,8 @@ namespace Framework.Data.Providers
         public Configuration BuildConfiguration(SessionFactoryParameters parameters)
         {
             var database = GetPersistenceConfigurer(parameters.CreateDatabase);
-            return new Configuration(); // database.ConfigureProperties();
+            return database.ConfigureProperties(null);
+            //   return new Configuration(); // database.ConfigureProperties();
 //            var database = GetPersistenceConfigurer(parameters.CreateDatabase);
 //            var persistenceModel = CreatePersistenceModel(parameters.RecordDescriptors.ToList());
 //

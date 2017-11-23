@@ -38,12 +38,10 @@ namespace Framework.Data.Providers
                 throw new ArgumentException("The connection string is empty");
             }
 
- 
-            return new PersistenceConfigurer(new Configuration()
-            {
-                 
-                
-            });
+            //maybe inject by autofac
+            var configurer=  new PersistenceConfigurer(_connectionString, ProviderName);
+          
+            return configurer;
             
         }
 

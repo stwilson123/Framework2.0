@@ -43,7 +43,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\AbstractDataServicesProvider.cs" />
     <Compile Include="Providers\SqlServerDataServicesProvider.cs" />
-    <Compile Include="SessionFactory.cs" />
     <Compile Include="Session\SqlServerSession.cs" />
   </ItemGroup>
   <ItemGroup>

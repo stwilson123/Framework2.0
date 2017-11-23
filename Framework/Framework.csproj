@@ -195,6 +195,7 @@
     <Compile Include="Data\Cfg\IPersistenceConfigurer.cs" />
     <Compile Include="Data\Cfg\PersistenceConfiguration.cs" />
     <Compile Include="Data\Conventions\StringLengthMaxAttribute.cs" />
+    <Compile Include="Data\DataModule.cs" />
     <Compile Include="Data\Interceptor\IDbInterceptor.cs" />
     <Compile Include="Data\ISession.cs" />
     <Compile Include="Data\ISessionConfigurationEvents.cs" />
@@ -207,6 +208,7 @@
     <Compile Include="Data\Providers\IDataServicesProviderFactory.cs" />
     <Compile Include="Data\Providers\SessionFactoryParameters.cs" />
     <Compile Include="Data\SessionConfigurationCache.cs" />
+    <Compile Include="Data\SessionFactory.cs" />
     <Compile Include="Environment\AppDomainAssemblyNameResolver.cs" />
     <Compile Include="Environment\Assemblys\AppDomainAssemblyNameResolver.cs" />
     <Compile Include="Environment\Assemblys\AspNetAssemblyBuilder.cs" />

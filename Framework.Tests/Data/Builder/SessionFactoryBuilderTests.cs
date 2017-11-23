@@ -36,7 +36,8 @@ namespace Framework.Tests.Data.Builder
                 sessionFactory => {
                     var session = sessionFactory.OpenSession();
                     var foo = new FooRecord { Name = "hi there" };
-                   // session.Save(foo);
+                    
+                     session.Insert(foo);
                     //session.Flush();
                     session.Close();
 

@@ -169,6 +169,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DBORM\DBORM.csproj">
+      <Project>{ae4badb2-cb82-47af-8eb8-940c3907c2c2}</Project>
+      <Name>DBORM</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Framework.Data\Framework.Data.csproj">
       <Project>{d03231a9-b474-48f2-9799-1429564e026e}</Project>
       <Name>Framework.Data</Name>

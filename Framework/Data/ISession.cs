@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq.Expressions;
 using System.Web.Http.Filters;
@@ -8,9 +9,43 @@ namespace Framework.Data
 {
     public interface ISession
     {
-      
-      
+
+        object Insert(object poco);
         
+        IList<object> Insert(IList<object> poco);
+
+        Boolean Delete(object id);
+
+        Boolean Delete(List<object> ids);
+
+        Boolean Update(object poco); 
+        
+//        /// <summary>
+//        ///     Executes a non-query command
+//        /// </summary>
+//        /// <param name="sql">The SQL statement to execute</param>
+//        /// <param name="args">Arguments to any embedded parameters in the SQL</param>
+//        /// <returns>The number of rows affected</returns>
+//        int Execute(string sql, params object[] args);
+//        
+//        /// <summary>
+//        ///     Executes a query and return the first column of the first row in the result set.
+//        /// </summary>
+//        /// <typeparam name="T">The type that the result value should be cast to</typeparam>
+//        /// <param name="sql">The SQL query to execute</param>
+//        /// <param name="args">Arguments to any embedded parameters in the SQL</param>
+//        /// <returns>The scalar value cast to T</returns>
+//        T ExecuteScalar<T>(string sql, params object[] args);
+//        
+//        /// <summary>Return the entity name for a persistent entity</summary>
+//        /// <param name="obj">a persistent entity</param>
+//        /// <returns> the entity name </returns>
+//        string GetEntityName(object obj);
+
+        T Get<T>(object id);
+        
+        List<T> Get<T>(List<object> ids);
+
         /// <summary>
         /// End the <c>ISession</c> by disconnecting from the ADO.NET connection and cleaning up.
         /// </summary>

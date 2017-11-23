@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.IO;
 using Autofac.Features.Metadata;
 using Framework.Data;
 using Framework.Data.Providers;
+using Framework.Data.Session;
 using Framework.Environment.ShellBuilder.Models;
 
 namespace Framework.Tests.Data
@@ -17,7 +19,7 @@ namespace Framework.Tests.Data
             if (File.Exists(temporaryPath))
                 File.Delete(temporaryPath);
             Directory.CreateDirectory(temporaryPath);
-            var databasePath = Path.Combine(temporaryPath, "Orchard.mdf");
+            var databasePath = Path.Combine(temporaryPath, "SystemTempTest.mdf");
             var databaseName = Path.GetFileNameWithoutExtension(databasePath);
             try {
                 // create database
@@ -33,7 +35,7 @@ namespace Framework.Tests.Data
                 var parameters = new SessionFactoryParameters {
                     Provider = "SqlServer",
                     DataFolder = temporaryPath,
-                    ConnectionString = "Data Source=.\\SQLEXPRESS;AttachDbFileName=" + databasePath + ";Integrated Security=True;User Instance=True;",
+                    ConnectionString = "Data Source=.;AttachDbFileName=" + databasePath + ";Integrated Security=True;",
                     RecordDescriptors = recordDescriptors,
                 };
 
@@ -44,7 +46,16 @@ namespace Framework.Tests.Data
                 //TODO
                 //new SchemaExport(configuration).Execute(false, true, false);
 
-                using (var sessionFactory = configuration.BuildSessionFactory()) {
+                var metaSession = new Meta<CreateDbSession>((connectionString) =>
+                        new SqlServerSession( connectionString),
+                    new Dictionary<string, object> { { "ProviderName", "SqlServer" } });
+
+                TryCreateSqlServerDatabseTable(databasePath, databaseName, @"CREATE TABLE [FooRecord](
+                    [Id] [bigint] NOT NULL,
+                    [Name] [nvarchar](max) NOT NULL,
+                    [Timespan] [timestamp] NULL
+                    )");
+                using (var sessionFactory = new SessionFactory(new []{ metaSession},configuration)) {
                     action(sessionFactory);
                 }
             }
@@ -77,9 +88,34 @@ namespace Framework.Tests.Data
             return true;
         }
 
+       private static bool TryCreateSqlServerDatabseTable(string databasePath,string databaseName,string tableSql)
+       {
+           DbConnection connection;
+           try {
+                connection = new SqlConnection("Data Source=.;AttachDbFileName=" + databasePath + ";Integrated Security=True;");
+               connection.Open();
+           }
+           catch (SqlException e) {
+               Trace.WriteLine(string.Format("Error opening connection to Sql Server ('{0}'). Skipping test.", e.Message));
+               return false;
+           }
+           if (connection == null)
+               return false;
+
+           using (connection) {
+               using (var command = connection.CreateCommand())
+               {
+                   command.CommandText = tableSql;
+                        
+                   command.ExecuteNonQuery();
+               }
+           }
+           return true;
+       }
+       
         private static SqlConnection TryOpenSqlServerConnection() {
             try {
-                var connection = new SqlConnection("Data Source=.\\SQLEXPRESS;Initial Catalog=tempdb;Integrated Security=true;User Instance=True;");
+                var connection = new SqlConnection("Data Source=.;Initial Catalog=tempdb;Integrated Security=true;");
                 connection.Open();
                 return connection;
             }
