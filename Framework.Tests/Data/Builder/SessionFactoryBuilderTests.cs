@@ -1,4 +1,5 @@
-﻿using Framework.Environment.ShellBuilder.Models;
+﻿using System;
+using Framework.Environment.ShellBuilder.Models;
 using Framework.Tests.Records;
 using Xunit;
 
@@ -35,7 +36,7 @@ namespace Framework.Tests.Data.Builder
             ProviderUtilities.RunWithSqlServer(recordDescriptors,
                 sessionFactory => {
                     var session = sessionFactory.OpenSession();
-                    var foo = new FooRecord { Name = "hi there" };
+                    var foo = new FooRecord { Name = "hi there", Timespan = DateTime.Now};
                     
                      session.Insert(foo);
                     //session.Flush();

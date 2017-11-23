@@ -51,10 +51,14 @@ namespace Framework.Tests.Data
                     new Dictionary<string, object> { { "ProviderName", "SqlServer" } });
 
                 TryCreateSqlServerDatabseTable(databasePath, databaseName, @"CREATE TABLE [FooRecord](
-                    [Id] [bigint] NOT NULL,
-                    [Name] [nvarchar](max) NOT NULL,
-                    [Timespan] [timestamp] NULL
-                    )");
+	[Id] [bigint] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](max) NOT NULL,
+	[Timespan] [DATETIME] NULL,
+ CONSTRAINT [PK_FooRecord] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]");
                 using (var sessionFactory = new SessionFactory(new []{ metaSession},configuration)) {
                     action(sessionFactory);
                 }
