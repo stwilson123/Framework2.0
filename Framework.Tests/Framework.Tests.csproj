@@ -101,7 +101,10 @@
     <Compile Include="DatabaseEnabledTestsBase.cs" />
     <Compile Include="Data\Bags\BagsTests.cs" />
     <Compile Include="Data\Builder\SessionFactoryBuilderTests.cs" />
+    <Compile Include="Data\ProvidersTests.cs" />
     <Compile Include="Data\ProviderUtilities.cs" />
+    <Compile Include="Data\RepositoryTests.cs" />
+    <Compile Include="Data\TestTransactionManager.cs" />
     <Compile Include="Environment\AutofacUtil\AutofacTests.cs" />
     <Compile Include="Environment\AutofacUtil\DynamicProxy2\DynamicProxyTests.cs" />
     <Compile Include="Environment\Blueprint\DefaultShellDescriptorCacheTests.cs" />
@@ -142,6 +145,7 @@
     <Compile Include="Mvc\Routes\UrlPrefixTests.cs" />
     <Compile Include="Mvc\SystemControllerFactoryTests.cs" />
     <Compile Include="Records\BarRecord.cs" />
+    <Compile Include="Records\BigRecord.cs" />
     <Compile Include="Records\FooRecord.cs" />
     <Compile Include="Security\DefaultEncryptionServiceTests.cs" />
     <Compile Include="Services\ClockTests.cs" />

@@ -11,7 +11,7 @@ namespace Framework.Data
         void RequireNew(IsolationLevel level);
         void Cancel();
 
-      //  ISession GetSession();
+         ISession GetSession();
     }
     
     //public class TransactionFilter : FilterProvider, IExceptionFilter {

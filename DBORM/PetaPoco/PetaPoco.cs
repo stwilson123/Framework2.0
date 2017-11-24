@@ -827,8 +827,8 @@ namespace PetaPoco
 
 
 
-        #region À©Õ¹Page
-        #region À©Õ¹
+        #region ï¿½ï¿½Õ¹Page
+        #region ï¿½ï¿½Õ¹
         /// <summary>
         ///     Retrieves a page of records	and the total number of available records
         /// </summary>
@@ -5543,7 +5543,7 @@ namespace PetaPoco
         DbProviderFactory GetFactory();
 
         /// <summary>
-        /// À©Õ¹·½·¨»ñÈ¡µÚÒ»Ìõ¼ÇÂ¼
+        /// ï¿½ï¿½Õ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Â¼
         /// </summary>
         /// <param name="take"></param>
         /// <param name="dist"></param>
@@ -5570,6 +5570,7 @@ namespace PetaPoco
         ///     Completes the transaction. Not calling complete will cause the transaction to rollback on dispose.
         /// </summary>
         void Complete();
+ 
     }
 
 
