@@ -202,11 +202,14 @@
     <Compile Include="Data\ISessionFactory.cs" />
     <Compile Include="Data\ITransactionManager.cs" />
     <Compile Include="Data\ISessionConfigurationCache.cs" />
+    <Compile Include="Data\Orderable.cs" />
     <Compile Include="Data\Providers\DataServiceParameters.cs" />
     <Compile Include="Data\Providers\DataServicesProviderFactory.cs" />
     <Compile Include="Data\Providers\IDataServicesProvider.cs" />
     <Compile Include="Data\Providers\IDataServicesProviderFactory.cs" />
     <Compile Include="Data\Providers\SessionFactoryParameters.cs" />
+    <Compile Include="Data\Repository\IRepository.cs" />
+    <Compile Include="Data\Repository\Repository.cs" />
     <Compile Include="Data\SessionConfigurationCache.cs" />
     <Compile Include="Data\SessionFactory.cs" />
     <Compile Include="Environment\AppDomainAssemblyNameResolver.cs" />

@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using Xunit;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Framework.Tests
 {
@@ -45,6 +46,9 @@ namespace Framework.Tests
         [Fact]
         public void Test2()
         {
+
+            List<string> list = null;
+            list.DefaultIfEmpty();
            var str=  JsonConvert.SerializeObject(new Data1() {a = "123"});
         }
         

@@ -14,41 +14,43 @@ namespace Framework.Tests.Data
 {
    public class ProviderUtilities {
 
-        public static void RunWithSqlServer(IEnumerable<RecordBlueprint> recordDescriptors, Action<ISessionFactory> action) {
+        public static void RunWithSqlServer(IEnumerable<RecordBlueprint> recordDescriptors, Action<ISessionFactory> action,bool isMandleRelease = false) {
             var temporaryPath = Path.GetTempFileName();
             if (File.Exists(temporaryPath))
                 File.Delete(temporaryPath);
             Directory.CreateDirectory(temporaryPath);
             var databasePath = Path.Combine(temporaryPath, "SystemTempTest.mdf");
             var databaseName = Path.GetFileNameWithoutExtension(databasePath);
-            try {
+            try
+            {
                 // create database
-                if (!TryCreateSqlServerDatabase(databasePath, databaseName))
-                    return;
+//                if (!TryCreateSqlServerDatabase(databasePath, databaseName))
+//                    return;
 
                 var meta = new Meta<CreateDataServicesProvider>((dataFolder, connectionString) =>
-                    new SqlServerDataServicesProvider(dataFolder, connectionString),
-                    new Dictionary<string, object> { { "ProviderName", "SqlServer" } });
+                        new SqlServerDataServicesProvider(dataFolder, connectionString),
+                    new Dictionary<string, object> {{"ProviderName", "SqlServer"}});
 
-                var manager = (IDataServicesProviderFactory)new DataServicesProviderFactory(new[] { meta });
+                var manager = (IDataServicesProviderFactory) new DataServicesProviderFactory(new[] {meta});
 
-                var parameters = new SessionFactoryParameters {
+                var parameters = new SessionFactoryParameters
+                {
                     Provider = "SqlServer",
                     DataFolder = temporaryPath,
-                    ConnectionString = "Data Source=.;AttachDbFileName=" + databasePath + ";Integrated Security=True;",
+                    ConnectionString = "Data Source=.;Initial Catalog=tempdb;Integrated Security=True;",
                     RecordDescriptors = recordDescriptors,
                 };
 
                 var configuration = manager
                     .CreateProvider(parameters)
                     .BuildConfiguration(parameters);
-                
+
                 //TODO
                 //new SchemaExport(configuration).Execute(false, true, false);
 
                 var metaSession = new Meta<CreateDbSession>((connectionString) =>
-                        new SqlServerSession( connectionString),
-                    new Dictionary<string, object> { { "ProviderName", "SqlServer" } });
+                        new SqlServerSession(connectionString),
+                    new Dictionary<string, object> {{"ProviderName", "SqlServer"}});
 
                 TryCreateSqlServerDatabseTable(databasePath, databaseName, @"CREATE TABLE [FooRecord](
 	[Id] [bigint] IDENTITY(1,1) NOT NULL,
@@ -59,17 +61,49 @@ namespace Framework.Tests.Data
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]");
-                using (var sessionFactory = new SessionFactory(new []{ metaSession},configuration)) {
+
+                TryCreateSqlServerDatabseTable(databasePath, databaseName, @"CREATE TABLE [BigRecord](
+	[Id] [bigint] IDENTITY(1,1) NOT NULL,
+	[Banner] [nvarchar](max) NOT NULL,
+	[Body] [nvarchar](max) NOT NULL,
+ CONSTRAINT [PK_BigRecord] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]");
+
+                using (var sessionFactory = new SessionFactory(new[] {metaSession}, configuration))
+                {
                     action(sessionFactory);
                 }
             }
+            catch (Exception ex)
+            {
+                throw;
+            }
             finally {
                 try {
-                    Directory.Delete(temporaryPath, true);
+                    if(!isMandleRelease)
+                   // Directory.Delete(temporaryPath, true);
+                    TryCreateSqlServerDatabseTable(databasePath, databaseName, @"DROP TABLE [FooRecord];DROP TABLE [BigRecord];");
                 }
-                catch (IOException) { }
+                catch (SqlException) { }
             }
         }
+
+       public static void ReleaseWithSqlServer()
+       {
+           try
+           {
+               TryCreateSqlServerDatabseTable(null, null, @"DROP TABLE [FooRecord];DROP TABLE [BigRecord];");
+
+           }
+           catch  
+           {
+               
+           }
+
+       }
 
         private static bool TryCreateSqlServerDatabase(string databasePath, string databaseName) {
             var connection = TryOpenSqlServerConnection();
@@ -96,7 +130,7 @@ namespace Framework.Tests.Data
        {
            DbConnection connection;
            try {
-                connection = new SqlConnection("Data Source=.;AttachDbFileName=" + databasePath + ";Integrated Security=True;");
+                connection = new SqlConnection("Data Source=.;Initial Catalog=tempdb;Integrated Security=True;");
                connection.Open();
            }
            catch (SqlException e) {

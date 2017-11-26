@@ -24,7 +24,7 @@ namespace Framework.Data
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
 

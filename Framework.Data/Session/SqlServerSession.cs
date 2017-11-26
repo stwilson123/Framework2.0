@@ -45,7 +45,7 @@ namespace Framework.Data.Session
 
         public T Get<T>(object id)
         {
-            throw new System.NotImplementedException();
+            return base.SingleOrDefault<T>(id);
         }
 
         public List<T> Get<T>(List<object> ids)
@@ -55,17 +55,21 @@ namespace Framework.Data.Session
 
         public IDbConnection Close()
         {
-            return this.Close();
+            base.CloseSharedConnection();
+            return base.Connection;
         }
 
         public ITransaction BeginTransaction()
         {
-           return this.BeginTransaction();
+            base.BeginTransaction();
+            return base.GetTransaction();
         }
 
         public ITransaction BeginTransaction(IsolationLevel isolationLevel)
         {
-            return this.BeginTransaction(isolationLevel);
+            base.IsolationLevel = isolationLevel;
+            base.BeginTransaction();
+            return base.GetTransaction();
 
         }
 
